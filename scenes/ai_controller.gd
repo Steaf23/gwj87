@@ -1,7 +1,7 @@
 class_name AIController
 extends Node2D
 
-@export var move_speed: int = 100
+@export var move_speed: int = 120
 @export var navigation_target: Node2D
 @export var target_pos_delta = 25 * 25
 

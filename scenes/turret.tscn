@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1xj0adwmmnsc"]
+[gd_scene load_steps=5 format=3 uid="uid://c1xj0adwmmnsc"]
 
 [ext_resource type="Script" uid="uid://cyn5q2pjvsnv4" path="res://scenes/turret.gd" id="1_el7wl"]
-[ext_resource type="Texture2D" uid="uid://dy53lpk2kn3ig" path="res://Temporary Sprites/tree.png" id="1_x3mc5"]
+[ext_resource type="Texture2D" uid="uid://cndtijnrsdpbe" path="res://Sprites/tree_orange.png" id="2_el7wl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_el7wl"]
+radius = 73.0274
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3mc5"]
 size = Vector2(28, 28)
@@ -9,10 +12,19 @@ size = Vector2(28, 28)
 [node name="Turret" type="StaticBody2D"]
 script = ExtResource("1_el7wl")
 
+[node name="VisionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_el7wl")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_x3mc5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_x3mc5")
-offset = Vector2(16, 0)
+texture = ExtResource("2_el7wl")
+offset = Vector2(16, -16)
+
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
