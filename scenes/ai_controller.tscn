@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxe21vp4h2x5w"]
+
+[ext_resource type="Script" uid="uid://bo7goyfbgn2mq" path="res://scenes/ai_controller.gd" id="1_50xct"]
+
+[node name="AIController" type="Node2D"]
+script = ExtResource("1_50xct")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

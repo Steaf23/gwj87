@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg1b7wd64d5l7"]
+
+[ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://scenes/turret.tscn" id="1_rw0k3"]
+[ext_resource type="Texture2D" uid="uid://182xr0w7ccv0" path="res://Temporary Sprites/cone_tree.png" id="2_3jugd"]
+
+[node name="Elder" groups=["elder_tree"] instance=ExtResource("1_rw0k3")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_3jugd")
