@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://crb03q1nc67a5"]
 
-[ext_resource type="Script" uid="uid://cmoxfje1jniht" path="res://scenes/enemy.gd" id="1_4ra3w"]
+[ext_resource type="Script" uid="uid://cmoxfje1jniht" path="res://Scenes/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://deyt4cbol43od" path="res://Temporary Sprites/lumberjack.png" id="1_7p1mj"]
-[ext_resource type="PackedScene" uid="uid://dxe21vp4h2x5w" path="res://scenes/ai_controller.tscn" id="2_md0e3"]
+[ext_resource type="PackedScene" uid="uid://dxe21vp4h2x5w" path="res://Scenes/ai_controller.tscn" id="2_md0e3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
 radius = 15.0333
@@ -37,7 +37,6 @@ move_speed = 30
 [node name="NavigationAgent2D" parent="AIController" index="0"]
 avoidance_enabled = true
 radius = 15.0
-debug_enabled = true
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="HitBox/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -1,6 +1,8 @@
 class_name Turret
 extends StaticBody2D
 
+signal died()
+
 @onready var hp: int = 3
 
 @onready var projectile_emitter: ProjectileEmitter = $ProjectileEmitter
@@ -8,11 +10,15 @@ extends StaticBody2D
 var visible_targets: Array[Enemy] = []
 var current_target: Enemy = null
 
+var dead = false
 
 func damage(amount: int) -> void:
+	if dead:
+		return
 	hp -= 1
 	if hp <= 0:
-		queue_free()
+		died.emit()
+		projectile_emitter.shooting = false
 
 
 func _on_vision_range_body_entered(body: Node2D) -> void:

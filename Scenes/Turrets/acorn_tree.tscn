@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2w0j8x1cvwo7"]
+
+[ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_6dw2f"]
+[ext_resource type="Script" uid="uid://chfqquyw3hu3w" path="res://Scenes/Turrets/projectile_emitter.gd" id="2_b1gwk"]
+[ext_resource type="PackedScene" uid="uid://b4c56gdunoi5p" path="res://Scenes/Turrets/projectile.tscn" id="3_uyem1"]
+[ext_resource type="Texture2D" uid="uid://chyj1cgow8vvi" path="res://Sprites/acorn_tree.png" id="4_nmtts"]
+
+[node name="AcornTree" instance=ExtResource("1_6dw2f")]
+
+[node name="VisionRange" parent="." index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="ProjectileEmitter" type="Node2D" parent="." index="2" node_paths=PackedStringArray("turret")]
+position = Vector2(16, -2)
+script = ExtResource("2_b1gwk")
+turret = NodePath("..")
+projectile = ExtResource("3_uyem1")
+
+[node name="Cooldown" type="Timer" parent="ProjectileEmitter" index="0"]
+wait_time = 0.25
+one_shot = true
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("4_nmtts")
+
+[connection signal="timeout" from="ProjectileEmitter/Cooldown" to="ProjectileEmitter" method="_on_cooldown_timeout"]

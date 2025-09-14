@@ -12,3 +12,5 @@ export_presets.cfg
 export/
 
 exports/*
+
+/**/*.tmp
