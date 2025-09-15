@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://crb03q1nc67a5"]
+[gd_scene load_steps=9 format=3 uid="uid://crb03q1nc67a5"]
 
 [ext_resource type="Script" uid="uid://cmoxfje1jniht" path="res://Scenes/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://deyt4cbol43od" path="res://Temporary Sprites/lumberjack.png" id="1_7p1mj"]
 [ext_resource type="PackedScene" uid="uid://dxe21vp4h2x5w" path="res://Scenes/ai_controller.tscn" id="2_md0e3"]
+[ext_resource type="Script" uid="uid://cgipnjw8wdf7t" path="res://Scenes/hp_bar.gd" id="4_287tu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
 radius = 15.0333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
 radius = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0830c"]
+bg_color = Color(0.144063, 0.144063, 0.144062, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghaa6"]
+bg_color = Color(0.772549, 0.176471, 0.156863, 1)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -37,6 +44,27 @@ move_speed = 30
 [node name="NavigationAgent2D" parent="AIController" index="0"]
 avoidance_enabled = true
 radius = 15.0
+
+[node name="HPBar" type="Node2D" parent="."]
+script = ExtResource("4_287tu")
+max_hp = 10
+
+[node name="ProgressBar" type="ProgressBar" parent="HPBar"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_0830c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ghaa6")
+value = 30.0
+show_percentage = false
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="HitBox/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

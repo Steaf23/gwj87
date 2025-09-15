@@ -33,3 +33,7 @@ func shoot() -> void:
 func _on_cooldown_timeout() -> void:
 	if shooting:
 		shoot.call_deferred()
+
+
+func get_projectile_speed() -> float:
+	return 75

@@ -23,3 +23,10 @@ func _on_attack_cooldown_timeout() -> void:
 	$HitBox/CollisionShape2D.disabled = false
 	for b in $HitBox.get_overlapping_bodies():
 		_on_hit_box_body_entered(b)
+
+
+func take_damage(amount: int) -> void:
+	$HPBar.current_hp -= 1
+	
+	if $HPBar.current_hp <= 0:
+		queue_free()
