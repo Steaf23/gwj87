@@ -6,6 +6,7 @@
 
 [node name="Stump" instance=ExtResource("1_f0t35")]
 y_sort_enabled = true
+type = 5
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_4fu7o")

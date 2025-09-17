@@ -13,6 +13,8 @@ size = Vector2(28, 28)
 script = ExtResource("1_el7wl")
 
 [node name="VisionRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange"]
 position = Vector2(16, 16)
