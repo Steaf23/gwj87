@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqmuakdfa81tv"
-path="res://.godot/imported/dead_stump.png-f2597871d6a8e7fbd1ae2d188c53e8d3.ctex"
+uid="uid://gvqhvoea0whn"
+path="res://.godot/imported/cone.png-83d33a2554dc63f7f037793e58b65df9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/dead_stump.png"
-dest_files=["res://.godot/imported/dead_stump.png-f2597871d6a8e7fbd1ae2d188c53e8d3.ctex"]
+source_file="res://Sprites/cone.png"
+dest_files=["res://.godot/imported/cone.png-83d33a2554dc63f7f037793e58b65df9.ctex"]
 
 [params]
 

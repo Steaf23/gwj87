@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://brktw2fuqesdy"]
+
+[ext_resource type="Texture2D" uid="uid://b8sbctq04tru8" path="res://Sprites/cone_tree.png" id="1_c0jyt"]
+[ext_resource type="Script" uid="uid://cl5wnnmtkwo86" path="res://GUI/turret_button.gd" id="2_w1xp0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayhe2"]
+atlas = ExtResource("1_c0jyt")
+region = Rect2(8, 48, 48, 48)
+
+[node name="TurretButton" type="TextureButton"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = SubResource("AtlasTexture_ayhe2")
+script = ExtResource("2_w1xp0")
