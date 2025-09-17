@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpsij67kr4o7n"
-path="res://.godot/imported/3.png-640286a3552d41b589d1ec84dd74eb0e.ctex"
+uid="uid://0vbhpyragx61"
+path="res://.godot/imported/4.png-2adfde4675236d3035f3dbc49d472068.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Animations/LumberjackAxe/Walk/3.png"
-dest_files=["res://.godot/imported/3.png-640286a3552d41b589d1ec84dd74eb0e.ctex"]
+source_file="res://Sprites/Animations/LumberjackChainsaw/Walk/4.png"
+dest_files=["res://.godot/imported/4.png-2adfde4675236d3035f3dbc49d472068.ctex"]
 
 [params]
 

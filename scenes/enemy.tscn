@@ -1,15 +1,58 @@
-[gd_scene load_steps=9 format=3 uid="uid://crb03q1nc67a5"]
+[gd_scene load_steps=17 format=3 uid="uid://crb03q1nc67a5"]
 
 [ext_resource type="Script" uid="uid://cmoxfje1jniht" path="res://Scenes/enemy.gd" id="1_4ra3w"]
-[ext_resource type="Texture2D" uid="uid://deyt4cbol43od" path="res://Temporary Sprites/lumberjack.png" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://con2ib6og4yc0" path="res://Sprites/Animations/LumberjackAxe/Swing/1.png" id="2_haro7"]
 [ext_resource type="PackedScene" uid="uid://dxe21vp4h2x5w" path="res://Scenes/ai_controller.tscn" id="2_md0e3"]
+[ext_resource type="Texture2D" uid="uid://c7an7kfpcbjpo" path="res://Sprites/Animations/LumberjackAxe/Swing/2.png" id="3_56vhr"]
 [ext_resource type="Script" uid="uid://cgipnjw8wdf7t" path="res://Scenes/hp_bar.gd" id="4_287tu"]
+[ext_resource type="Texture2D" uid="uid://cjwbabuyl64vy" path="res://Sprites/Animations/LumberjackAxe/Swing/3.png" id="4_ta2yt"]
+[ext_resource type="Texture2D" uid="uid://lwamejsqmrnc" path="res://Sprites/Animations/LumberjackAxe/Swing/4.png" id="5_m4x7e"]
+[ext_resource type="Texture2D" uid="uid://bx6jj4w2nqbdq" path="res://Sprites/Animations/LumberjackAxe/Walk/1.png" id="6_vt4ob"]
+[ext_resource type="Texture2D" uid="uid://cliew1vctgt4f" path="res://Sprites/Animations/LumberjackAxe/Walk/2.png" id="7_hgeoe"]
+[ext_resource type="Texture2D" uid="uid://cpsij67kr4o7n" path="res://Sprites/Animations/LumberjackAxe/Walk/3.png" id="8_tk7xo"]
+[ext_resource type="Texture2D" uid="uid://c5vifrj0qn0fx" path="res://Sprites/Animations/LumberjackAxe/Walk/4.png" id="9_scl1n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
-radius = 15.0333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
-radius = 24.0
+radius = 20.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhkrs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_haro7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_56vhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ta2yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m4x7e")
+}],
+"loop": false,
+"name": &"swing",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_vt4ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hgeoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tk7xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_scl1n")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0830c"]
 bg_color = Color(0.144063, 0.144063, 0.144062, 1)
@@ -34,9 +77,13 @@ shape = SubResource("CircleShape2D_4ra3w")
 unique_name_in_owner = true
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7p1mj")
-offset = Vector2(0, -16)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dhkrs")
+animation = &"swing"
+autoplay = "walk"
+frame = 3
+frame_progress = 1.0
+offset = Vector2(0, 5)
 
 [node name="AIController" parent="." instance=ExtResource("2_md0e3")]
 move_speed = 30
