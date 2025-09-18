@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwhwwsifarfkp"]
+
+[ext_resource type="PackedScene" uid="uid://b4c56gdunoi5p" path="res://Scenes/Turrets/Projectiles/projectile.tscn" id="1_j8dag"]
+[ext_resource type="Script" uid="uid://dj4ti0ypsofjc" path="res://Scenes/Turrets/Projectiles/direct_projectile.gd" id="2_esmx1"]
+
+[node name="DirectProjectile" instance=ExtResource("1_j8dag")]
+script = ExtResource("2_esmx1")

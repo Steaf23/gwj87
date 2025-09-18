@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dig0w8j1prvxm"]
+
+[ext_resource type="PackedScene" uid="uid://b305yvxpuohyb" path="res://Scenes/Turrets/Projectiles/impact_projectile.tscn" id="1_byakh"]
+[ext_resource type="Texture2D" uid="uid://yav2mr2r1hex" path="res://Sprites/chestnut.png" id="2_uuldn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nx1wl"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uuldn"]
+radius = 6.0827627
+
+[node name="Chestnut" instance=ExtResource("1_byakh")]
+lifespan = 3.0
+damage = 0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_nx1wl")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_uuldn")
+
+[node name="DamageArea" parent="." index="2"]
+effect = 1
+
+[node name="CollisionShape2D" parent="DamageArea" index="0"]
+shape = SubResource("CircleShape2D_uuldn")
+
+[editable path="DamageArea"]

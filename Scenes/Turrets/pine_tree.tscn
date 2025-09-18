@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8jqqylagwria"]
+
+[ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_tjcsw"]
+[ext_resource type="Texture2D" uid="uid://b8sbctq04tru8" path="res://Sprites/cone_tree.png" id="2_4shf5"]
+[ext_resource type="PackedScene" uid="uid://c8kqk7ejkwnrn" path="res://Scenes/Turrets/Projectiles/projectile_emitter.tscn" id="3_xyljs"]
+[ext_resource type="PackedScene" uid="uid://b8g4a4pm3f5xp" path="res://Scenes/Turrets/Projectiles/pine_cone.tscn" id="4_tddsd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xyljs"]
+radius = 65.0
+
+[node name="PineTree" instance=ExtResource("1_tjcsw")]
+type = 3
+
+[node name="CollisionShape2D" parent="VisionRange" index="0"]
+shape = SubResource("CircleShape2D_xyljs")
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_4shf5")
+
+[node name="ProjectileEmitter" parent="." index="3" node_paths=PackedStringArray("turret") instance=ExtResource("3_xyljs")]
+position = Vector2(16, 6)
+turret = NodePath("..")
+projectile = ExtResource("4_tddsd")
+
+[node name="Cooldown" parent="ProjectileEmitter" index="0"]
+wait_time = 2.0
+
+[editable path="ProjectileEmitter"]

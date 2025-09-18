@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8fxcls1dlt0i"]
 
 [ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_jpodm"]
-[ext_resource type="PackedScene" uid="uid://c8kqk7ejkwnrn" path="res://Scenes/Turrets/projectile_emitter.tscn" id="2_hayur"]
+[ext_resource type="PackedScene" uid="uid://c8kqk7ejkwnrn" path="res://Scenes/Turrets/Projectiles/projectile_emitter.tscn" id="2_hayur"]
 [ext_resource type="Texture2D" uid="uid://cc4wfgwp8111o" path="res://Sprites/chestnut_tree.png" id="2_v75ij"]
-[ext_resource type="PackedScene" uid="uid://dig0w8j1prvxm" path="res://Scenes/Turrets/chestnut.tscn" id="4_v75ij"]
+[ext_resource type="PackedScene" uid="uid://dig0w8j1prvxm" path="res://Scenes/Turrets/Projectiles/chestnut.tscn" id="4_v75ij"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v75ij"]
 radius = 100.0

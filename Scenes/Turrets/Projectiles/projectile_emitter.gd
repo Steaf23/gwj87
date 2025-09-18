@@ -2,12 +2,11 @@ class_name ProjectileEmitter
 extends Node2D
 
 @export var turret: Turret
-
 ## Empty direction means the direction will be chosen randomly
-@export var direction: Vector2
 @export var projectile: PackedScene
-
 @export var direction_target: Enemy
+
+@onready var direction: Vector2
 
 @onready var shooting: bool = false:
 	set(value):

@@ -1,9 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4c56gdunoi5p"]
-
-[ext_resource type="Script" uid="uid://dvcr85df6336m" path="res://projectile.gd" id="1_y4hek"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q3m7n"]
-radius = 6.3245554
+[gd_scene load_steps=3 format=3 uid="uid://b4c56gdunoi5p"]
 
 [sub_resource type="Gradient" id="Gradient_y4hek"]
 offsets = PackedFloat32Array(0.7166124, 1)
@@ -20,10 +15,8 @@ fill_from = Vector2(0.5, 0.5)
 z_index = 1
 collision_layer = 4
 collision_mask = 6
-script = ExtResource("1_y4hek")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_q3m7n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_0g81e")

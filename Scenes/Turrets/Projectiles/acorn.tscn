@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjll8fodi05rc"]
+
+[ext_resource type="PackedScene" uid="uid://bwhwwsifarfkp" path="res://Scenes/Turrets/Projectiles/direct_projectile.tscn" id="1_stbya"]
+[ext_resource type="Texture2D" uid="uid://3eqmhf1f14gf" path="res://Sprites/acorn.png" id="2_quoqo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6uiqx"]
+radius = 6.3245554
+
+[node name="Acorn" instance=ExtResource("1_stbya")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_6uiqx")
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = -2.3561945
+texture = ExtResource("2_quoqo")

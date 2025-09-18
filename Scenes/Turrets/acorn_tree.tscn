@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d2w0j8x1cvwo7"]
 
 [ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_6dw2f"]
-[ext_resource type="PackedScene" uid="uid://c8kqk7ejkwnrn" path="res://Scenes/Turrets/projectile_emitter.tscn" id="2_n6tyf"]
-[ext_resource type="PackedScene" uid="uid://cjll8fodi05rc" path="res://Scenes/Turrets/acorn.tscn" id="4_jnrr5"]
+[ext_resource type="PackedScene" uid="uid://c8kqk7ejkwnrn" path="res://Scenes/Turrets/Projectiles/projectile_emitter.tscn" id="2_n6tyf"]
+[ext_resource type="PackedScene" uid="uid://cjll8fodi05rc" path="res://Scenes/Turrets/Projectiles/acorn.tscn" id="4_jnrr5"]
 [ext_resource type="Texture2D" uid="uid://chyj1cgow8vvi" path="res://Sprites/acorn_tree.png" id="4_nmtts"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jnrr5"]

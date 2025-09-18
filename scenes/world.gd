@@ -1,11 +1,5 @@
 extends Node2D
 
-var available_turrets: Dictionary = {
-	Turret.TURRET_TYPE.ACORN: preload("res://Scenes/Turrets/acorn_tree.tscn"),
-	Turret.TURRET_TYPE.CHESTNUT: preload("res://Scenes/Turrets/chestnut_tree.tscn"),
-	Turret.TURRET_TYPE.CONE: preload("res://Scenes/Turrets/acorn_tree.tscn"),
-}
-
 
 var turrets: Dictionary[Vector2i, Node]
 
@@ -55,7 +49,7 @@ func _input(event: InputEvent) -> void:
 			turrets[cell].queue_free()
 			turrets.erase(cell)
 		
-		var turret = available_turrets[placing_turret].instantiate()
+		var turret = TurretData.turrets[placing_turret].scene.instantiate()
 		turret.died.connect(_on_turret_died.bind(turret))
 		%Objects.add_child(turret)
 		turrets[cell] = turret

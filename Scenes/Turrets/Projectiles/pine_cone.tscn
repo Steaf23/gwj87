@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8g4a4pm3f5xp"]
+
+[ext_resource type="PackedScene" uid="uid://b305yvxpuohyb" path="res://Scenes/Turrets/Projectiles/impact_projectile.tscn" id="1_kcv2u"]
+[ext_resource type="Texture2D" uid="uid://gvqhvoea0whn" path="res://Sprites/cone.png" id="2_q6uha"]
+[ext_resource type="Script" uid="uid://b6m4u0ipprrk2" path="res://Scenes/Turrets/Projectiles/pine_cone.gd" id="2_xsrw1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xsrw1"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1sfop"]
+radius = 42.047592
+
+[node name="PineCone" instance=ExtResource("1_kcv2u")]
+script = ExtResource("2_xsrw1")
+lifespan = 2.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_xsrw1")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_q6uha")
+
+[node name="DamageArea" parent="." index="2"]
+visible = false
+damage = 2
+
+[node name="CollisionShape2D" parent="DamageArea" index="0"]
+shape = SubResource("CircleShape2D_1sfop")
+
+[editable path="DamageArea"]
