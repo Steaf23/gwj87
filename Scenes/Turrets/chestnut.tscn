@@ -7,7 +7,7 @@
 radius = 11.0
 
 [node name="Chestnut" instance=ExtResource("1_b0ohn")]
-lifespan = 2.0
+lifespan = 4.0
 effect = 1
 
 [node name="CollisionShape2D" parent="." index="0"]

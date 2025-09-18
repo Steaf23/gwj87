@@ -1,0 +1,48 @@
+class_name EnemySpawner
+extends Node2D
+
+const enemies: Dictionary[int, PackedScene] = {
+	1: preload("res://Scenes/Enemies/axe_enemy.tscn"),
+	5: preload("res://Scenes/Enemies/saw_enemy.tscn")
+}
+
+signal wave_cleared()
+
+var amount_to_spawn: int = 5
+var spawn_counter: int = 0
+var wave_active: bool = false
+
+
+func start_wave(_spawn_count: int) -> void:
+	wave_active = true
+	amount_to_spawn = _spawn_count
+	spawn_counter = 0
+	$SpawnTimer.start()
+	spawn()
+	
+
+func spawn() -> void:
+	var enemy: Enemy = enemies.values().pick_random().instantiate()
+	print(enemy.name)
+	%Objects.add_child(enemy)
+	if not enemy.is_node_ready():
+		await enemy.ready
+	enemy.global_position = global_position
+	enemy.ai_controller.navigation_target = %Objects/Elder
+	enemy.died.connect(_on_enemy_died)
+	spawn_counter += 1
+
+
+func _on_spawn_timer_timeout() -> void:
+	if spawn_counter >= amount_to_spawn:
+		$SpawnTimer.stop()
+		return
+	
+	spawn()
+
+
+func _on_enemy_died() -> void:
+	if spawn_counter >= amount_to_spawn:
+		if %Objects.get_children().filter(func(c): return c is Enemy and not c.is_dead).is_empty():
+			wave_active = false
+			wave_cleared.emit()

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpsd0rcgumc6h"]
+
+[ext_resource type="PackedScene" uid="uid://crb03q1nc67a5" path="res://Scenes/Enemies/enemy.tscn" id="1_w2w0o"]
+
+[node name="AxeEnemy" instance=ExtResource("1_w2w0o")]
+
+[editable path="AIController"]

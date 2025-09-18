@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://chfqquyw3hu3w" path="res://Scenes/Turrets/projectile_emitter.gd" id="1_ob5n5"]
 [ext_resource type="PackedScene" uid="uid://b4c56gdunoi5p" path="res://Scenes/Turrets/projectile.tscn" id="2_j66iu"]
 
-[node name="ProjectileEmitter" type="Node2D" node_paths=PackedStringArray("turret")]
+[node name="ProjectileEmitter" type="Node2D"]
 script = ExtResource("1_ob5n5")
-turret = NodePath("")
 projectile = ExtResource("2_j66iu")
 
 [node name="Cooldown" type="Timer" parent="."]

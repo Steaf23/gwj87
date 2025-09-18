@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://crb03q1nc67a5"]
 
-[ext_resource type="Script" uid="uid://cmoxfje1jniht" path="res://Scenes/enemy.gd" id="1_4ra3w"]
+[ext_resource type="Script" uid="uid://cmoxfje1jniht" path="res://Scenes/Enemies/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://con2ib6og4yc0" path="res://Sprites/Animations/LumberjackAxe/Swing/1.png" id="2_haro7"]
-[ext_resource type="PackedScene" uid="uid://dxe21vp4h2x5w" path="res://Scenes/ai_controller.tscn" id="2_md0e3"]
+[ext_resource type="PackedScene" uid="uid://dxe21vp4h2x5w" path="res://Scenes/Enemies/ai_controller.tscn" id="2_md0e3"]
 [ext_resource type="Texture2D" uid="uid://c7an7kfpcbjpo" path="res://Sprites/Animations/LumberjackAxe/Swing/2.png" id="3_56vhr"]
 [ext_resource type="Script" uid="uid://cgipnjw8wdf7t" path="res://Scenes/hp_bar.gd" id="4_287tu"]
 [ext_resource type="Texture2D" uid="uid://cjwbabuyl64vy" path="res://Sprites/Animations/LumberjackAxe/Swing/3.png" id="4_ta2yt"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://dtwbykiw2fji8"]
+
+[ext_resource type="PackedScene" uid="uid://crb03q1nc67a5" path="res://Scenes/Enemies/enemy.tscn" id="1_jjjag"]
+[ext_resource type="Texture2D" uid="uid://b7ndncpispa6o" path="res://Sprites/Animations/LumberjackChainsaw/Cut/1.png" id="2_a822d"]
+[ext_resource type="Texture2D" uid="uid://c6xuqwya7ao0a" path="res://Sprites/Animations/LumberjackChainsaw/Cut/2.png" id="3_fjou7"]
+[ext_resource type="Texture2D" uid="uid://ckm4qyl0ep0n8" path="res://Sprites/Animations/LumberjackChainsaw/Cut/3.png" id="4_e6me8"]
+[ext_resource type="Texture2D" uid="uid://itpp8bb61uld" path="res://Sprites/Animations/LumberjackChainsaw/Cut/4.png" id="5_eafcg"]
+[ext_resource type="Texture2D" uid="uid://c3tral4cnu5ou" path="res://Sprites/Animations/LumberjackChainsaw/Walk/1.png" id="6_fseti"]
+[ext_resource type="Texture2D" uid="uid://kb31wj6ompdf" path="res://Sprites/Animations/LumberjackChainsaw/Walk/2.png" id="7_0ti5i"]
+[ext_resource type="Texture2D" uid="uid://lauxdsp4q4bn" path="res://Sprites/Animations/LumberjackChainsaw/Walk/3.png" id="8_n5dkt"]
+[ext_resource type="Texture2D" uid="uid://0vbhpyragx61" path="res://Sprites/Animations/LumberjackChainsaw/Walk/4.png" id="9_1y1ph"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lrb2i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a822d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fjou7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e6me8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eafcg")
+}],
+"loop": true,
+"name": &"swing",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fseti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0ti5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n5dkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1y1ph")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="SawEnemy" instance=ExtResource("1_jjjag")]
+damage = 2
+
+[node name="Sprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_lrb2i")
+animation = &"walk"
+frame = 0
+frame_progress = 0.07344218
+
+[node name="AIController" parent="." index="3"]
+move_speed = 20
+
+[node name="HPBar" parent="." index="4"]
+max_hp = 25
+
+[editable path="AIController"]

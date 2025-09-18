@@ -6,6 +6,8 @@ enum DAMAGE_EFFECT {
 	STUN,
 }
 
+signal died()
+
 @export var damage: int = 1
 
 @onready var ai_controller: AIController = $AIController
@@ -14,6 +16,7 @@ enum DAMAGE_EFFECT {
 var attacking: bool = false
 var stunned: bool = false
 
+var is_dead: bool = false
 
 func _physics_process(_delta: float) -> void:
 	if not attacking and not stunned:
@@ -22,6 +25,10 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 	
 	move_and_slide()
+	if get_real_velocity().x < -0.1:
+		$Sprite2D.flip_h = true
+	elif get_real_velocity().x > 0.1:
+		$Sprite2D.flip_h = false
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
@@ -46,6 +53,8 @@ func take_damage(_amount: int, damage_effect: DAMAGE_EFFECT = DAMAGE_EFFECT.NONE
 	$HPBar.current_hp -= _amount
 	
 	if $HPBar.current_hp <= 0:
+		is_dead = true
+		died.emit()
 		queue_free()
 		return
 		
@@ -53,9 +62,11 @@ func take_damage(_amount: int, damage_effect: DAMAGE_EFFECT = DAMAGE_EFFECT.NONE
 		DAMAGE_EFFECT.STUN:
 			$StunTimer.start()
 			stunned = true
+			$Sprite2D.pause()
 
 
 func _on_stun_timer_timeout() -> void:
 	stunned = false
+	$Sprite2D.play()
 	for b in $HitBox.get_overlapping_bodies():
 		_on_hit_box_body_entered(b)
