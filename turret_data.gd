@@ -22,5 +22,12 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"projectile_speed": 45,
 		"vision_range": 65,
 		"price": 1
+	},
+	Turret.TURRET_TYPE.MUSHROOM_MINE: {
+		"scene": preload("uid://1xsa55uxi1te"),
+		"name": "Mushroom Mine",
+		"projectile_speed": 0,
+		"vision_range": 20,
+		"price": 1,
 	}
 }

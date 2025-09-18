@@ -11,6 +11,7 @@ func _ready() -> void:
 	create_button(Turret.TURRET_TYPE.ACORN, load("res://Sprites/acorn_tree.png"))
 	create_button(Turret.TURRET_TYPE.CHESTNUT, load("res://Sprites/chestnut_tree.png"))
 	create_button(Turret.TURRET_TYPE.CONE, load("res://Sprites/cone_tree.png"))
+	create_button(Turret.TURRET_TYPE.MUSHROOM_MINE, load("res://Sprites/fly_agaric.png"))
 
 
 func create_button(type: Turret.TURRET_TYPE, icon: Texture2D) -> void:

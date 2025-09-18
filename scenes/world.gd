@@ -77,7 +77,7 @@ func _on_turret_died(turret: Turret) -> void:
 			break
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_preview()
 
 

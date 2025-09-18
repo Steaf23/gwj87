@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvxakdq78464w"]
+
+[ext_resource type="Script" uid="uid://e4vbn7ci3egb" path="res://Scenes/Turrets/explosion_trigger.gd" id="1_2uyy8"]
+
+[node name="ExplosionTrigger" type="Node" node_paths=PackedStringArray("turret", "damage_area")]
+script = ExtResource("1_2uyy8")
+turret = NodePath("")
+damage_area = NodePath("")
+
+[node name="StartupTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="StartupTimer" to="." method="_on_startup_timer_timeout"]

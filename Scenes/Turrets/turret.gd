@@ -8,6 +8,7 @@ enum TURRET_TYPE {
 	CONE,
 	ELDER,
 	DEAD,
+	MUSHROOM_MINE,
 }
 
 signal died()
