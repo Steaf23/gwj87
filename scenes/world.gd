@@ -39,7 +39,12 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
 		if not place_preview.is_visible() or placing_turret == Turret.TURRET_TYPE.NONE:
 			return
-		
+		if Rect2(%DropContainer.global_position, %DropContainer.size).has_point(get_global_mouse_position()):
+			placing_turret = Turret.TURRET_TYPE.NONE
+			place_preview.hide()
+			%DropContainer.hide()
+			return
+
 		place_preview.hide()
 		
 		var cell = $Ground.local_to_map($Ground.get_local_mouse_position())

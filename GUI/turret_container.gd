@@ -28,3 +28,5 @@ func create_button(type: Turret.TURRET_TYPE, icon: Texture2D) -> void:
 func _on_button_drag_started(type: Turret.TURRET_TYPE) -> void:
 	adding_turret = type
 	dragging_turret.emit(type)
+	$PanelContainer/FoldableContainer.fold()
+	%DropContainer.show()

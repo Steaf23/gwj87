@@ -16,7 +16,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"projectile_speed": 50,
 		"vision_range": 100,
 		"price": 500,
-		"description": "Shoots spiky chestnuts from medium-long range that stun trespassers.",
+		"description": "Launches spiky chestnuts from medium-long range that stun trespassers.",
 	},
 	Turret.TURRET_TYPE.CONE: {
 		"scene": preload("uid://c8jqqylagwria"),
