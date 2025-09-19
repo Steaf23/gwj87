@@ -29,5 +29,12 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"projectile_speed": 0,
 		"vision_range": 20,
 		"price": 1,
+	},
+		Turret.TURRET_TYPE.GROW_MUSHROOM: {
+		"scene": preload("uid://b6fxibbuh2g66"),
+		"name": "Grow Mushroom",
+		"projectile_speed": 0,
+		"vision_range": 16,
+		"price": 1,
 	}
 }

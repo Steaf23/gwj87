@@ -1,3 +1,4 @@
+class_name World
 extends Node2D
 
 
@@ -51,6 +52,7 @@ func _input(event: InputEvent) -> void:
 		
 		var turret = TurretData.turrets[placing_turret].scene.instantiate()
 		turret.died.connect(_on_turret_died.bind(turret))
+		turret.world = self
 		%Objects.add_child(turret)
 		turrets[cell] = turret
 		$Grass.set_cell(cell, 2, Vector2i.ZERO)

@@ -9,6 +9,7 @@ enum TURRET_TYPE {
 	ELDER,
 	DEAD,
 	MUSHROOM_MINE,
+	GROW_MUSHROOM,
 }
 
 signal died()
@@ -18,6 +19,8 @@ signal target_changed(new_target: Enemy)
 @export var type: Turret.TURRET_TYPE
 
 @onready var hp: int = max_hp
+
+@onready var world: Node2D
 
 var visible_targets: Array[Enemy] = []
 var current_target: Enemy = null

@@ -23,7 +23,6 @@ func start_wave(_spawn_count: int) -> void:
 
 func spawn() -> void:
 	var enemy: Enemy = enemies.values().pick_random().instantiate()
-	print(enemy.name)
 	%Objects.add_child(enemy)
 	if not enemy.is_node_ready():
 		await enemy.ready
