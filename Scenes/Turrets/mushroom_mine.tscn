@@ -22,19 +22,19 @@ shape = SubResource("CircleShape2D_pyqhi")
 position = Vector2(16, 17.5)
 shape = null
 
-[node name="Sprite2D" parent="." index="2"]
-texture = ExtResource("2_4uuli")
-
-[node name="ExplosionTrigger" parent="." index="3" node_paths=PackedStringArray("turret", "damage_area") instance=ExtResource("3_4uuli")]
-turret = NodePath("..")
-damage_area = NodePath("../DamageArea")
-
-[node name="DamageArea" parent="." index="4" instance=ExtResource("2_nwmos")]
+[node name="DamageArea" parent="." index="2" instance=ExtResource("2_nwmos")]
 damage = 10
 effect = 1
 
 [node name="CollisionShape2D" parent="DamageArea" index="0"]
 position = Vector2(16, 16)
 shape = SubResource("CircleShape2D_4uuli")
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_4uuli")
+
+[node name="ExplosionTrigger" parent="." index="4" node_paths=PackedStringArray("turret", "damage_area") instance=ExtResource("3_4uuli")]
+turret = NodePath("..")
+damage_area = NodePath("../DamageArea")
 
 [editable path="DamageArea"]

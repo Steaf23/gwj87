@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://e4jktbx8c7y4"]
+
+[ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_48naw"]
+[ext_resource type="Texture2D" uid="uid://cccrkss4ncdbd" path="res://Sprites/root_cluster.png" id="2_cejsr"]
+
+[node name="Roots" instance=ExtResource("1_48naw")]
+max_hp = 20
+type = 8
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_cejsr")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c56352ivfur05"]
+
+[ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_hl2q0"]
+
+[node name="OakTree" instance=ExtResource("1_hl2q0")]
+max_hp = 10
