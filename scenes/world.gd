@@ -30,8 +30,7 @@ func _ready() -> void:
 	
 	for child in %Objects.get_children():
 		if child is Turret:
-			if child.type != Turret.TURRET_TYPE.ELDER:
-				child.died.connect(_on_turret_died.bind(child))
+			child.died.connect(_on_turret_died.bind(child))
 			turrets[$Ground.local_to_map($Ground.to_local(child.global_position))] = child
 
 
@@ -75,6 +74,11 @@ func _input(event: InputEvent) -> void:
 		
 func _on_turret_died(turret: Turret) -> void:
 	assert(turret in turrets.values())
+	
+	if turret.type == Turret.TURRET_TYPE.ELDER:
+		# TODO: GAMEOVER
+		get_tree().reload_current_scene.call_deferred()
+		
 	
 	for cell in turrets.keys():
 		var t = turrets[cell]

@@ -1,8 +1,6 @@
 class_name GrowMushroom
 extends Turret
 
-var dormant: bool = false
-
 @onready var grow_stage: GrowStageAnimator = $GrowController/GrowStage
 @onready var damage_area: DamageArea = %DamageArea
 
@@ -16,12 +14,11 @@ func _ready() -> void:
 
 
 func damage(_amount: int) -> void:
-	if dormant:
+	if hp <= 0:
 		return
 	
 	hp = clamp(hp - 1, 0, max_hp) # only takes 1 damage at a time
 	if hp <= 0:
-		dormant = true
 		$CollisionShape2D.set_deferred("disabled", true)
 	damage_area.trigger()
 	%GrowTimer.start()
