@@ -78,6 +78,7 @@ bg_color = Color(0.34783167, 0.7750422, 0.99999994, 1)
 [node name="GrowMushroom" instance=ExtResource("1_6161y")]
 script = ExtResource("3_iefer")
 max_hp = 5
+type = 7
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_5cd6y")
