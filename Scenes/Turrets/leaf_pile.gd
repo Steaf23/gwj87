@@ -1,7 +1,7 @@
 class_name LeafPile
 extends Turret
 
-@export var max_stage = 2
+@export var max_stage = 3
 
 @onready var stage: int = 0:
 	set(value):
@@ -9,4 +9,4 @@ extends Turret
 		
 		if not is_node_ready():
 			await ready
-		$Sprite2D.modulate = Color(1.0, 1.0, 1.0, (stage + 1.0) / (max_stage + 1))
+		$AnimatedSprite2D.play(str(stage))

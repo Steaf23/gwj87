@@ -1,21 +1,66 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo7m55ray0m1w"]
+[gd_scene load_steps=10 format=3 uid="uid://bo7m55ray0m1w"]
 
 [ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_06k3y"]
 [ext_resource type="Texture2D" uid="uid://dborwkrbu6upk" path="res://Sprites/leaf_pile.png" id="2_dxfvp"]
 [ext_resource type="Script" uid="uid://bacm32e20vqp5" path="res://Scenes/Turrets/leaf_pile.gd" id="2_k2tah"]
+[ext_resource type="Texture2D" uid="uid://bwkscquyb4w3f" path="res://Sprites/leaf_pile_1.png" id="4_il14s"]
+[ext_resource type="Texture2D" uid="uid://rp5n12o8um1b" path="res://Sprites/leaf_pile_2.png" id="5_md7p3"]
+[ext_resource type="Texture2D" uid="uid://bqhu2v3msgtio" path="res://Sprites/leaf_pile_3.png" id="6_6ocpb"]
+[ext_resource type="Texture2D" uid="uid://cyyw1qg1es6ph" path="res://Sprites/leaf_pile_4.png" id="7_le6ae"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k2tah"]
 radius = 6.3245554
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ty47u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_il14s")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_md7p3")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6ocpb")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_le6ae")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
 [node name="LeafPile" instance=ExtResource("1_06k3y")]
 script = ExtResource("2_k2tah")
-max_stage = 2
+max_stage = 3
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_k2tah")
 
 [node name="Sprite2D" parent="." index="2"]
+visible = false
 texture = ExtResource("2_dxfvp")
 
 [node name="HpBar" parent="." index="3"]
 visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+sprite_frames = SubResource("SpriteFrames_ty47u")
+animation = &"0"
+offset = Vector2(16, -16)
