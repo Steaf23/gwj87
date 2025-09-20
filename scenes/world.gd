@@ -35,6 +35,9 @@ func _ready() -> void:
 		if child is Turret:
 			child.died.connect(_on_turret_died.bind(child))
 			turrets[$Ground.local_to_map($Ground.to_local(child.global_position))] = child
+	
+	SoundManager.play_music(Sounds.MUSIC_GAME)
+	SoundManager.play_ambient(Sounds.AMBIENT)
 
 
 func _input(event: InputEvent) -> void:
@@ -55,6 +58,7 @@ func _input(event: InputEvent) -> void:
 		if turret == null:
 			return
 		
+		SoundManager.play_random_sfx(Sounds.TURRET_PLACE)
 		# remove points for placing turret
 		for b: TurretButton in %Buttons.get_children():
 			if b.type == placing_turret:
@@ -128,7 +132,7 @@ func _on_wave_button_pressed() -> void:
 	wave_button.disabled = true
 	wave += 1
 	%Wave.text = "Wave " + str(wave)
-
+	SoundManager.play_sfx(Sounds.BUTTON_PRESS)
 
 func cell_of_turret(turret: Turret) -> Vector2i:
 	assert(turret in turrets.values(), "Cannot get cell of a turret I don't own.")
@@ -177,3 +181,7 @@ func update_progress() -> void:
 	var total_cells = 11 * 20
 	
 	grass_percent.value = grass.get_used_cells().size() / float(total_cells) * 100
+
+
+func _on_foldable_container_folding_changed(is_folded: bool) -> void:
+	SoundManager.play_sfx(Sounds.BUTTON_PRESS)

@@ -4,6 +4,7 @@ extends Node
 
 @onready var _music_player = $MusicPlayer
 @onready var _sfx_pool = $SFXPool
+@onready var _ambient_player: AudioStreamPlayer = $AmbientPlayer
 
 var _player_counter = 0
 
@@ -30,14 +31,30 @@ func play_music(path: String) -> void:
 		
 	_music_player.stream = load(path)
 	_music_player.play()
-	
 
 
 func stop_music() -> void:
 	_music_player.stop()
-	$DrumTimer.stop()
-	$Drums.stop()
-	
+
+
+func play_ambient(paths: Array[StringName]) -> void:
+	var new_path = paths.pick_random()
+	if _ambient_player.playing:
+		if new_path == _music_player.stream.resource_path:
+			return
+		else:
+			_ambient_player.stop()
+		
+	if !ResourceLoader.exists(new_path):
+		print("Cannot find " + new_path + "!")
+		
+	_ambient_player.stream = load(new_path)
+	_ambient_player.play()
+
+
+func stop_ambient() -> void:
+	_ambient_player.stop()
+
 	
 func muffle_music(muffle: bool) -> void:
 	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Music"), 0, muffle)

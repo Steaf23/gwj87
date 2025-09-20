@@ -18,11 +18,12 @@ func _ready() -> void:
 		)
 	
 func explode(target: Enemy = null) -> void:
-	if not target:
+	if not target or not single_target:
 		damage_area.trigger()
 	else:
 		target.take_damage(damage_area.damage, damage_area.effect)
 	
+	SoundManager.play_random_sfx(Sounds.MUSHROOM_EXPLODE, 0.7)
 	if explode_turret:
 		turret.damage(turret.hp)
 

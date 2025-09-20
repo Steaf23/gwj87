@@ -43,6 +43,10 @@ func damage(amount: int) -> void:
 	hp = clamp(hp - amount, 0, max_hp)
 	if hp <= 0:
 		died.emit()
+		if type == TURRET_TYPE.ELDER:
+			SoundManager.play_sfx(Sounds.ELDER_DEATH)
+		elif type != TURRET_TYPE.MUSHROOM_MINE:
+			SoundManager.play_sfx(Sounds.TURRET_DEATH, 0.5)
 
 
 func _on_vision_range_body_entered(body: Node2D) -> void:

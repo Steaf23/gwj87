@@ -17,10 +17,11 @@ func damage(_amount: int) -> void:
 	if hp <= 0:
 		return
 	
-	hp = clamp(hp - 1, 0, max_hp) # only takes 1 damage at a time
+	hp = clamp(hp - _amount, 0, max_hp)
 	if hp <= 0:
 		$CollisionShape2D.set_deferred("disabled", true)
 	damage_area.trigger()
+	SoundManager.play_random_sfx(Sounds.MUSHROOM_EXPLODE, 0.5)
 	%GrowTimer.start()
 	update_stage()
 

@@ -9,7 +9,7 @@
 radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4uuli"]
-radius = 61.204575
+radius = 50.01
 
 [node name="MushroomMine" instance=ExtResource("1_qvtip")]
 max_hp = 1

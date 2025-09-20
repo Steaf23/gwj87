@@ -271,7 +271,7 @@ grow_vertical = 1
 [connection signal="wave_cleared" from="EnemySpawner" to="." method="_on_enemy_spawner_wave_cleared"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]
 [connection signal="dragging_turret" from="CanvasLayer/TurretContainer" to="." method="_on_turret_container_dragging_turret"]
-[connection signal="folding_changed" from="CanvasLayer/TurretContainer/PanelContainer/FoldableContainer" to="CanvasLayer/TurretContainer" method="_on_foldable_container_folding_changed"]
+[connection signal="folding_changed" from="CanvasLayer/TurretContainer/PanelContainer/FoldableContainer" to="." method="_on_foldable_container_folding_changed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/WaveButton" to="." method="_on_wave_button_pressed"]
 [connection signal="cancel_placement" from="CanvasLayer/DropContainer" to="." method="_on_drop_container_cancel_placement"]
 
