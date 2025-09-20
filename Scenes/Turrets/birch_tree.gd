@@ -39,5 +39,5 @@ func get_available_cells() -> Array[Vector2i]:
 	return result
 
 
-func _on_enemy_died(enemy: Enemy) -> void:
+func _on_enemy_died(_enemy: Enemy) -> void:
 	spread()

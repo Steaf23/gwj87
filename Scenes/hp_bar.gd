@@ -14,6 +14,7 @@ extends Node2D
 		current_hp = value
 		$ProgressBar.value = current_hp
 		if fade_out:
+			$AnimationPlayer.stop()
 			$AnimationPlayer.play("fade")
 
 func _ready() -> void:

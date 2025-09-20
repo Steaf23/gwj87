@@ -35,6 +35,8 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Turret and attack_cooldown.is_stopped() and not stunned:
 		attack_cooldown.start()
 		body.damage(damage)
+		
+		$Sprite2D.flip_h = body.global_position.x < global_position.x
 		$Sprite2D.play("swing")
 		$HitBox/CollisionShape2D.set_deferred("disabled", true)
 		attacking = true

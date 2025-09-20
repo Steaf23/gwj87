@@ -12,6 +12,7 @@ var turrets: Dictionary[Vector2i, Node]
 @onready var enemy_spawner: EnemySpawner = $EnemySpawner
 @onready var place_preview: Node2D = %PlacePreview
 @onready var grass: TileMapLayer = $Grass
+@onready var grass_percent: ProgressBar = %GrassPercent
 
 @onready var placing_turret: Turret.TURRET_TYPE = Turret.TURRET_TYPE.NONE
 
@@ -25,6 +26,7 @@ var player_points: int = 0:
 		points_label.text = str(player_points)
 		
 		update_turret_buttons()
+
 
 func _ready() -> void:
 	player_points = 750
@@ -49,7 +51,9 @@ func _input(event: InputEvent) -> void:
 		%DropContainer.hide()
 		
 		var cell = $Ground.local_to_map($Ground.get_local_mouse_position())
-		add_turret(placing_turret, cell, true)
+		var turret = add_turret(placing_turret, cell, true)
+		if turret == null:
+			return
 		
 		# remove points for placing turret
 		for b: TurretButton in %Buttons.get_children():
@@ -122,6 +126,8 @@ func update_turret_buttons() -> void:
 func _on_wave_button_pressed() -> void:
 	enemy_spawner.start_wave(next_wave_budget)
 	wave_button.disabled = true
+	wave += 1
+	%Wave.text = "Wave " + str(wave)
 
 
 func cell_of_turret(turret: Turret) -> Vector2i:
@@ -135,6 +141,9 @@ func cell_of_turret(turret: Turret) -> Vector2i:
 
 
 func add_turret(type: Turret.TURRET_TYPE, cell: Vector2i, add_grass: bool) -> Turret:
+	if cell.x < 0 or cell.y < 0 or cell.x > 19 or cell.y > 10:
+		return null
+		
 	if cell in turrets:
 		if turrets[cell] == elder:
 			return null
@@ -145,11 +154,11 @@ func add_turret(type: Turret.TURRET_TYPE, cell: Vector2i, add_grass: bool) -> Tu
 	var turret = TurretData.turrets[type].scene.instantiate()
 	turret.died.connect(_on_turret_died.bind(turret))
 	turret.world = self
-	%Objects.add_child(turret)
+	%Objects.add_child.call_deferred(turret)
 	turrets[cell] = turret
 	
 	if add_grass:
-		grass.set_cell(cell, 2, Vector2i.ZERO)
+		set_grass(cell, true)
 	
 	turret.global_position = cell * 32
 	return turret
@@ -158,5 +167,13 @@ func add_turret(type: Turret.TURRET_TYPE, cell: Vector2i, add_grass: bool) -> Tu
 func set_grass(cell: Vector2i, value: bool) -> void:
 	if value:
 		grass.set_cell(cell, 2, Vector2i.ZERO)
+		update_progress()
 	else:
 		grass.erase_cell(cell)
+
+
+func update_progress() -> void:
+	# TODO: subtract boulder tiles
+	var total_cells = 11 * 20
+	
+	grass_percent.value = grass.get_used_cells().size() / float(total_cells) * 100

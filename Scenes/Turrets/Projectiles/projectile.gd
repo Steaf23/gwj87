@@ -8,13 +8,14 @@ extends Area2D
 
 @onready var speed: int = 100
 
+var dead = false
 	
 @abstract 
 func enemy_hit(body: Enemy)
 
 
 func _lifespan_reached():
-	queue_free()
+	destroy()
 	
 
 func _ready() -> void:
@@ -24,9 +25,19 @@ func _ready() -> void:
 	_lifespan_reached()
 
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
 	position += Vector2.RIGHT.rotated(global_rotation) * speed * delta
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemy_hit(body)
+
+
+func destroy() -> void:
+	if dead: return
+	
+	dead = true
+	$CollisionShape2D.set_deferred("disabled", true)
+	$AnimationPlayer.play("fade")

@@ -6,4 +6,4 @@ extends Projectile
 
 func enemy_hit(_body: Enemy):
 	damage_area.trigger()
-	queue_free()
+	destroy()

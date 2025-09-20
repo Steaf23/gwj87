@@ -60,6 +60,21 @@ bg_color = Color(0.14509805, 0.14509805, 0.14509805, 0.6666667)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghaa6"]
 bg_color = Color(0.772549, 0.176471, 0.156863, 1)
 
+[sub_resource type="Animation" id="Animation_7ubbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_beuat"]
 resource_name = "fade"
 step = 0.1
@@ -74,21 +89,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 2.1435468, 38.05468),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_7ubbs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ubbs"]
