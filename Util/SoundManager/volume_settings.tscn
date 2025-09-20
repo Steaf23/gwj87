@@ -33,7 +33,8 @@ layout_mode = 2
 bus = &"Music"
 
 [node name="HSlider" parent="Music" index="1"]
-value = 20.0
+step = 5.0
+value = 15.0
 
 [node name="SFX" parent="." instance=ExtResource("1_338k6")]
 layout_mode = 2
