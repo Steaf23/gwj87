@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsr172t8pg7nl"]
+
+[ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_v63rx"]
+[ext_resource type="Script" uid="uid://b64pacfccolu4" path="res://Scenes/Turrets/birch_tree.gd" id="2_jsag7"]
+[ext_resource type="Texture2D" uid="uid://ddfxeraub4yl4" path="res://Sprites/leaf_tree.png" id="2_s3ic6"]
+
+[node name="BirchTree" instance=ExtResource("1_v63rx")]
+script = ExtResource("2_jsag7")
+max_hp = 8
+type = 9
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_s3ic6")

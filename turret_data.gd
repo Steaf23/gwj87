@@ -50,12 +50,15 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"price": 1,
 		"description": "Acts as a defensive wall that takes a bit of time to destroy."
 	},
-	Turret.TURRET_TYPE.OAK: {
-		"scene": preload("uid://e4jktbx8c7y4"),
-		"name": "Oak Tree",
+	Turret.TURRET_TYPE.BIRCH: {
+		"scene": preload("uid://dsr172t8pg7nl"),
+		"name": "BIRCH Tree",
 		"projectile_speed": 0,
 		"vision_range": 0,
 		"price": 1,
-		"description": "Spreads out leaves to claim more forest ground."
-	}
+		"description": "Sheds out leaves to claim more forest ground."
+	},
+	Turret.TURRET_TYPE.LEAVES: {
+		"scene": preload("uid://bo7m55ray0m1w")
+	},
 }

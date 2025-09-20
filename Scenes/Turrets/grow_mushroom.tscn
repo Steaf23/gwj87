@@ -119,6 +119,9 @@ max_value = 1.0
 value = 0.5
 show_percentage = false
 
+[node name="HpBar" parent="." index="5"]
+visible = false
+
 [connection signal="timeout" from="GrowController/GrowTimer" to="." method="_on_grow_timer_timeout"]
 
 [editable path="DamageArea"]

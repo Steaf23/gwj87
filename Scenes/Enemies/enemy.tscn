@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crb03q1nc67a5"]
+[gd_scene load_steps=20 format=3 uid="uid://crb03q1nc67a5"]
 
 [ext_resource type="Script" uid="uid://cmoxfje1jniht" path="res://Scenes/Enemies/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://con2ib6og4yc0" path="res://Sprites/Animations/LumberjackAxe/Swing/1.png" id="2_haro7"]
@@ -60,6 +60,43 @@ bg_color = Color(0.14509805, 0.14509805, 0.14509805, 0.6666667)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghaa6"]
 bg_color = Color(0.772549, 0.176471, 0.156863, 1)
 
+[sub_resource type="Animation" id="Animation_beuat"]
+resource_name = "fade"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 2.1435468, 38.05468),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ubbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ubbs"]
+_data = {
+&"RESET": SubResource("Animation_7ubbs"),
+&"fade": SubResource("Animation_beuat")
+}
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
@@ -94,6 +131,7 @@ radius = 15.0
 
 [node name="HPBar" type="Node2D" parent="."]
 script = ExtResource("4_287tu")
+fade_out = true
 max_hp = 10
 
 [node name="ProgressBar" type="ProgressBar" parent="HPBar"]
@@ -112,6 +150,11 @@ theme_override_styles/background = SubResource("StyleBoxFlat_0830c")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ghaa6")
 value = 30.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HPBar"]
+libraries = {
+&"": SubResource("AnimationLibrary_7ubbs")
+}
 
 [node name="StunTimer" type="Timer" parent="."]
 one_shot = true

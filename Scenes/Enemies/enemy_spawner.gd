@@ -7,6 +7,7 @@ const enemies: Dictionary[int, PackedScene] = {
 }
 
 signal wave_cleared()
+signal enemy_died(enemy: Enemy)
 
 var amount_to_spawn: int = 5
 var spawn_counter: int = 0
@@ -28,7 +29,7 @@ func spawn() -> void:
 		await enemy.ready
 	enemy.global_position = global_position
 	enemy.ai_controller.navigation_target = %Objects/Elder
-	enemy.died.connect(_on_enemy_died)
+	enemy.died.connect(_on_enemy_died.bind(enemy))
 	spawn_counter += 1
 
 
@@ -40,8 +41,10 @@ func _on_spawn_timer_timeout() -> void:
 	spawn()
 
 
-func _on_enemy_died() -> void:
+func _on_enemy_died(enemy: Enemy) -> void:
+	enemy_died.emit(enemy)
 	if spawn_counter >= amount_to_spawn:
 		if %Objects.get_children().filter(func(c): return c is Enemy and not c.is_dead).is_empty():
 			wave_active = false
 			wave_cleared.emit()
+	

@@ -11,6 +11,7 @@ var turrets: Dictionary[Vector2i, Node]
 @onready var wave_button: Button = %WaveButton
 @onready var enemy_spawner: EnemySpawner = $EnemySpawner
 @onready var place_preview: Node2D = %PlacePreview
+@onready var grass: TileMapLayer = $Grass
 
 @onready var placing_turret: Turret.TURRET_TYPE = Turret.TURRET_TYPE.NONE
 
@@ -48,33 +49,20 @@ func _input(event: InputEvent) -> void:
 		%DropContainer.hide()
 		
 		var cell = $Ground.local_to_map($Ground.get_local_mouse_position())
-		if cell in turrets:
-			if turrets[cell] == elder:
-				return
-			# TODO: kill turret properly
-			turrets[cell].queue_free()
-			turrets.erase(cell)
-		
-		var turret = TurretData.turrets[placing_turret].scene.instantiate()
-		turret.died.connect(_on_turret_died.bind(turret))
-		turret.world = self
-		%Objects.add_child(turret)
-		turrets[cell] = turret
-		$Grass.set_cell(cell, 2, Vector2i.ZERO)
-		
-		turret.global_position = cell * 32
+		add_turret(placing_turret, cell, true)
 		
 		# remove points for placing turret
 		for b: TurretButton in %Buttons.get_children():
 			if b.type == placing_turret:
 				player_points -= b.active_price
 				break
-				
+		
 		placing_turret = Turret.TURRET_TYPE.NONE
 		
 		
 func _on_turret_died(turret: Turret) -> void:
-	assert(turret in turrets.values())
+	if not turret in turrets.values():
+		return
 	
 	if turret.type == Turret.TURRET_TYPE.ELDER:
 		# TODO: GAMEOVER
@@ -108,7 +96,7 @@ func update_preview() -> void:
 
 func calculate_points() -> int:
 	var placed_turrets = %Objects.get_children().filter(func(t): return t is Turret and t.type != Turret.TURRET_TYPE.DEAD).size() - 1
-	return (placed_turrets * 2 + $Grass.get_used_cells().size()) * 100
+	return (placed_turrets * 2 + grass.get_used_cells().size()) * 100
 
 
 func calculate_wave_budget() -> int:
@@ -134,3 +122,41 @@ func update_turret_buttons() -> void:
 func _on_wave_button_pressed() -> void:
 	enemy_spawner.start_wave(next_wave_budget)
 	wave_button.disabled = true
+
+
+func cell_of_turret(turret: Turret) -> Vector2i:
+	assert(turret in turrets.values(), "Cannot get cell of a turret I don't own.")
+	
+	for c in turrets.keys():
+		if turrets[c] == turret:
+			return c
+	
+	return Vector2i.ZERO
+
+
+func add_turret(type: Turret.TURRET_TYPE, cell: Vector2i, add_grass: bool) -> Turret:
+	if cell in turrets:
+		if turrets[cell] == elder:
+			return null
+		# TODO: kill turret properly
+		turrets[cell].queue_free()
+		turrets.erase(cell)
+	
+	var turret = TurretData.turrets[type].scene.instantiate()
+	turret.died.connect(_on_turret_died.bind(turret))
+	turret.world = self
+	%Objects.add_child(turret)
+	turrets[cell] = turret
+	
+	if add_grass:
+		grass.set_cell(cell, 2, Vector2i.ZERO)
+	
+	turret.global_position = cell * 32
+	return turret
+
+
+func set_grass(cell: Vector2i, value: bool) -> void:
+	if value:
+		grass.set_cell(cell, 2, Vector2i.ZERO)
+	else:
+		grass.erase_cell(cell)

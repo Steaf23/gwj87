@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo7m55ray0m1w"]
+
+[ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_06k3y"]
+[ext_resource type="Texture2D" uid="uid://dborwkrbu6upk" path="res://Sprites/leaf_pile.png" id="2_dxfvp"]
+[ext_resource type="Script" uid="uid://bacm32e20vqp5" path="res://Scenes/Turrets/leaf_pile.gd" id="2_k2tah"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2tah"]
+radius = 6.3245554
+
+[node name="LeafPile" instance=ExtResource("1_06k3y")]
+script = ExtResource("2_k2tah")
+max_stage = 2
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_k2tah")
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_dxfvp")
+
+[node name="HpBar" parent="." index="3"]
+visible = false

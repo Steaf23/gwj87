@@ -11,7 +11,8 @@ enum TURRET_TYPE {
 	MUSHROOM_MINE,
 	GROW_MUSHROOM,
 	ROOTS,
-	OAK,
+	BIRCH,
+	LEAVES,
 }
 
 signal died()

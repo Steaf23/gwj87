@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var fade_out: bool = false
 
 @export var max_hp: int = 20:
 	set(value):
@@ -12,7 +13,8 @@ extends Node2D
 	set(value):
 		current_hp = value
 		$ProgressBar.value = current_hp
-
+		if fade_out:
+			$AnimationPlayer.play("fade")
 
 func _ready() -> void:
 	max_hp = max_hp
