@@ -3,7 +3,8 @@ extends Node2D
 
 const enemies: Dictionary[int, PackedScene] = {
 	1: preload("res://Scenes/Enemies/axe_enemy.tscn"),
-	5: preload("res://Scenes/Enemies/saw_enemy.tscn")
+	5: preload("res://Scenes/Enemies/saw_enemy.tscn"),
+	10: preload("res://Scenes/Enemies/flame_enemy.tscn"),
 }
 
 signal wave_cleared()

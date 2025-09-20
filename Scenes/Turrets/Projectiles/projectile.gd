@@ -1,4 +1,3 @@
-@abstract
 class_name Projectile
 extends Area2D
 
@@ -9,9 +8,6 @@ extends Area2D
 @onready var speed: int = 100
 
 var dead = false
-	
-@abstract 
-func enemy_hit(body: Enemy)
 
 
 func _lifespan_reached():
@@ -24,15 +20,11 @@ func _ready() -> void:
 	if not is_instance_valid(self): return
 	_lifespan_reached()
 
+
 func _physics_process(delta: float) -> void:
 	if dead:
 		return
 	position += Vector2.RIGHT.rotated(global_rotation) * speed * delta
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		enemy_hit(body)
 
 
 func destroy() -> void:

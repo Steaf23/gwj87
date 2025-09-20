@@ -10,4 +10,6 @@ script = ExtResource("2_trndx")
 [node name="DamageArea" parent="." index="2" instance=ExtResource("3_trndx")]
 unique_name_in_owner = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+
 [editable path="DamageArea"]

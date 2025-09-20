@@ -6,6 +6,6 @@ extends Area2D
 
 
 func trigger() -> void:
-	for b in get_overlapping_bodies():
-		if b is Enemy:
-			b.take_damage(damage, effect)
+	for b in get_overlapping_areas():
+		if b is HurtBox:
+			b.damage(damage, effect)

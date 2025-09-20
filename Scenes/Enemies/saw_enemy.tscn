@@ -53,19 +53,19 @@ damage = 2
 [node name="AttackCooldown" parent="HitBox" index="1"]
 wait_time = 2.0
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_lrb2i")
 animation = &"walk"
 frame = 0
 frame_progress = 0.07344218
 
-[node name="AIController" parent="." index="3"]
+[node name="AIController" parent="." index="4"]
 move_speed = 20
 
-[node name="HPBar" parent="." index="4"]
+[node name="HPBar" parent="." index="5"]
 max_hp = 25
 
-[node name="SoundPlayer" parent="." index="6"]
+[node name="SoundPlayer" parent="." index="7"]
 type = 1
 
 [editable path="AIController"]

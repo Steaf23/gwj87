@@ -3,7 +3,9 @@ extends Projectile
 
 @onready var damage_area: DamageArea = %DamageArea
 
-
-func enemy_hit(_body: Enemy):
+func _on_area_entered(area: Area2D) -> void:
+	if area is not HurtBox:
+		return
+		
 	damage_area.trigger()
 	destroy()

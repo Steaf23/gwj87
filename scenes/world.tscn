@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cb5ogx63v83yx"]
+[gd_scene load_steps=22 format=4 uid="uid://cb5ogx63v83yx"]
 
 [ext_resource type="Script" uid="uid://i47uqdvpsp6c" path="res://Scenes/world.gd" id="1_nnsk1"]
 [ext_resource type="TileSet" uid="uid://blkvhyot7eq0s" path="res://Resources/tileset.tres" id="2_k0juu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://yqrou1dugyux" path="res://Sprites/currency_small.png" id="8_k7acu"]
 [ext_resource type="Script" uid="uid://c7jerxoy3b45x" path="res://Scenes/drop_container.gd" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://d0pwau4w45s2f" path="res://Util/pause_menu.tscn" id="10_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://on6c8msmh7ae" path="res://Scenes/Enemies/fire.tscn" id="11_ikia7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rwgxs"]
 vertices = PackedVector2Array(610.1406, 342, 10, 342, 10, -54, 107.09375, -15.25, 614.8594, 20.3125, 60.382813, -54)
@@ -80,7 +81,7 @@ script = ExtResource("1_nnsk1")
 level = 1
 
 [node name="EnemySpawner" type="Node2D" parent="."]
-position = Vector2(32, -32)
+position = Vector2(39, 34)
 script = ExtResource("2_k7acu")
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
@@ -344,6 +345,11 @@ text = "Play a different map"
 
 [node name="Control2" type="Control" parent="PauseLayer/PauseMenu"]
 layout_mode = 2
+
+[node name="Fire" parent="." instance=ExtResource("11_ikia7")]
+position = Vector2(-585, -80)
+emitting = true
+one_shot = false
 
 [connection signal="wave_cleared" from="EnemySpawner" to="." method="_on_enemy_spawner_wave_cleared"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

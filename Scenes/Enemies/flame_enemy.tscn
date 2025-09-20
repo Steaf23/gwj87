@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://cctedw8b6kfhv"]
+
+[ext_resource type="PackedScene" uid="uid://crb03q1nc67a5" path="res://Scenes/Enemies/enemy.tscn" id="1_04blk"]
+[ext_resource type="PackedScene" uid="uid://on6c8msmh7ae" path="res://Scenes/Enemies/fire.tscn" id="2_5gwp5"]
+[ext_resource type="Texture2D" uid="uid://c5pne72cnnvyy" path="res://Sprites/Animations/LumberjackFlamethrower/Burn/1.png" id="2_q3q12"]
+[ext_resource type="Texture2D" uid="uid://blrvv6tv7slul" path="res://Sprites/Animations/LumberjackFlamethrower/Walk/1.png" id="3_5gwp5"]
+[ext_resource type="Texture2D" uid="uid://b8qnuaislw8nu" path="res://Sprites/Animations/LumberjackFlamethrower/Walk/2.png" id="4_e417a"]
+[ext_resource type="Texture2D" uid="uid://4fi1ftuce3qn" path="res://Sprites/Animations/LumberjackFlamethrower/Walk/3.png" id="5_4y56m"]
+[ext_resource type="Texture2D" uid="uid://dmhwl27c4o6p4" path="res://Sprites/Animations/LumberjackFlamethrower/Walk/4.png" id="6_pgwyq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryeyo"]
+radius = 37.01351
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1cu43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q3q12")
+}],
+"loop": false,
+"name": &"swing",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5gwp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e417a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4y56m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pgwyq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="FlameEnemy" instance=ExtResource("1_04blk")]
+damage = 2
+aoe = true
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(24, 0)
+shape = SubResource("CircleShape2D_ryeyo")
+
+[node name="AttackCooldown" parent="HitBox" index="1"]
+wait_time = 3.0
+
+[node name="Sprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_1cu43")
+frame = 0
+frame_progress = 0.0
+
+[node name="Fire" parent="Sprite2D" index="0" instance=ExtResource("2_5gwp5")]
+z_index = 1
+position = Vector2(15, 0)
+
+[node name="AIController" parent="." index="3"]
+move_speed = 15
+
+[node name="HPBar" parent="." index="4"]
+max_hp = 40
+
+[node name="SoundPlayer" parent="." index="6"]
+type = 2
+
+[connection signal="attack_started" from="." to="Sprite2D/Fire" method="_on_flame_enemy_attack_started"]
+
+[editable path="AIController"]

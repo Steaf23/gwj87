@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://crb03q1nc67a5"]
+[gd_scene load_steps=23 format=3 uid="uid://crb03q1nc67a5"]
 
 [ext_resource type="Script" uid="uid://cmoxfje1jniht" path="res://Scenes/Enemies/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://con2ib6og4yc0" path="res://Sprites/Animations/LumberjackAxe/Swing/1.png" id="2_haro7"]
 [ext_resource type="PackedScene" uid="uid://dxe21vp4h2x5w" path="res://Scenes/Enemies/ai_controller.tscn" id="2_md0e3"]
+[ext_resource type="Script" uid="uid://bdfjgu45lufj7" path="res://Scenes/Enemies/hurtbox.gd" id="2_ycxl0"]
 [ext_resource type="Texture2D" uid="uid://c7an7kfpcbjpo" path="res://Sprites/Animations/LumberjackAxe/Swing/2.png" id="3_56vhr"]
 [ext_resource type="Script" uid="uid://cgipnjw8wdf7t" path="res://Scenes/hp_bar.gd" id="4_287tu"]
 [ext_resource type="Texture2D" uid="uid://cjwbabuyl64vy" path="res://Sprites/Animations/LumberjackAxe/Swing/3.png" id="4_ta2yt"]
@@ -13,7 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://c5vifrj0qn0fx" path="res://Sprites/Animations/LumberjackAxe/Walk/4.png" id="9_scl1n"]
 [ext_resource type="Script" uid="uid://cuuguingcuh6e" path="res://Scenes/Enemies/sound_player.gd" id="12_7ubbs"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycxl0"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
 radius = 13.038404
@@ -100,8 +104,16 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 261
 script = ExtResource("1_4ra3w")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+script = ExtResource("2_ycxl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_ycxl0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_md0e3")
@@ -128,7 +140,7 @@ move_speed = 30
 
 [node name="NavigationAgent2D" parent="AIController" index="0"]
 avoidance_enabled = true
-radius = 15.0
+radius = 5.0
 
 [node name="HPBar" type="Node2D" parent="."]
 script = ExtResource("4_287tu")
@@ -164,6 +176,7 @@ one_shot = true
 script = ExtResource("12_7ubbs")
 
 [connection signal="attack_started" from="." to="SoundPlayer" method="_on_enemy_attack_started"]
+[connection signal="damaged" from="Hurtbox" to="." method="_on_hurtbox_damaged"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="HitBox/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

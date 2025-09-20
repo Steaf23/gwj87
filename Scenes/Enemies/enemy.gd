@@ -10,6 +10,7 @@ signal died()
 signal attack_started(attack_duration: float)
 
 @export var damage: int = 1
+@export var aoe: bool = false
 
 @onready var ai_controller: AIController = $AIController
 @onready var attack_cooldown: Timer = %AttackCooldown
@@ -27,22 +28,34 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	if get_real_velocity().x < -0.1:
-		$Sprite2D.flip_h = true
+		$Sprite2D.scale.x = -1.0
 	elif get_real_velocity().x > 0.1:
-		$Sprite2D.flip_h = false
+		$Sprite2D.scale.x = 1.0
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Turret and attack_cooldown.is_stopped() and not stunned:
 		attack_cooldown.start()
-		attack_started.emit($%AttackCooldown.wait_time / 2)
-		body.damage(damage)
 		
-		$Sprite2D.flip_h = body.global_position.x < global_position.x
+		var body_pos = body.global_position
+		await get_tree().create_timer($%AttackCooldown.wait_time * 0.3).timeout
+		
+		if aoe:
+			for b in $HitBox.get_overlapping_bodies().filter(func(c): return c is Turret):
+				if b == body: continue
+				b.damage(damage / 2.0)
+		
+		# if it didn't die from the other damage
+		if is_instance_valid(body):
+			body.damage(damage)
+		attack_started.emit($%AttackCooldown.wait_time * 0.7)
+		
+		
+		$Sprite2D.scale.x = -1.0 if body_pos.x < global_position.x else 1.0
 		$Sprite2D.play("swing")
 		$HitBox/CollisionShape2D.set_deferred("disabled", true)
 		attacking = true
-		await get_tree().create_timer($%AttackCooldown.wait_time / 2).timeout
+		await get_tree().create_timer($%AttackCooldown.wait_time * 0.7).timeout
 		attacking = false
 		$Sprite2D.play("walk")
 
@@ -74,3 +87,7 @@ func _on_stun_timer_timeout() -> void:
 	$Sprite2D.play()
 	for b in $HitBox.get_overlapping_bodies():
 		_on_hit_box_body_entered(b)
+
+
+func _on_hurtbox_damaged(amount: int, effect: Enemy.DAMAGE_EFFECT) -> void:
+	take_damage(amount, effect)
