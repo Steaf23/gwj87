@@ -8,13 +8,13 @@ const TURRET_BUTTON = preload("uid://brktw2fuqesdy")
 var adding_turret: Turret.TURRET_TYPE = Turret.TURRET_TYPE.NONE
 
 func _ready() -> void:
-	create_button(Turret.TURRET_TYPE.ACORN, load("res://Sprites/acorn_tree.png"))
-	create_button(Turret.TURRET_TYPE.CHESTNUT, load("res://Sprites/chestnut_tree.png"))
-	create_button(Turret.TURRET_TYPE.CONE, load("res://Sprites/cone_tree.png"))
-	create_button(Turret.TURRET_TYPE.MUSHROOM_MINE, load("res://Sprites/fly_agaric.png"))
-	create_button(Turret.TURRET_TYPE.GROW_MUSHROOM, load("res://Sprites/entoloma_hochstetteri_5.png"))
-	create_button(Turret.TURRET_TYPE.ROOTS, load("res://Sprites/root_cluster.png"))
-	create_button(Turret.TURRET_TYPE.BIRCH, load("res://Sprites/leaf_tree.png"))
+	create_button(Turret.TURRET_TYPE.ACORN, load("res://Sprites/GrasslessTurrets/acorn_tree.png"))
+	create_button(Turret.TURRET_TYPE.CHESTNUT, load("res://Sprites/GrasslessTurrets/chestnut_tree.png"))
+	create_button(Turret.TURRET_TYPE.CONE, load("res://Sprites/GrasslessTurrets/cone_tree.png"))
+	create_button(Turret.TURRET_TYPE.MUSHROOM_MINE, load("res://Sprites/GrasslessTurrets/fly_agaric.png"))
+	create_button(Turret.TURRET_TYPE.GROW_MUSHROOM, load("res://Sprites/GrasslessTurrets/entoloma_hochstetteri.png"))
+	create_button(Turret.TURRET_TYPE.ROOTS, load("res://Sprites/GrasslessTurrets/root_cluster.png"))
+	create_button(Turret.TURRET_TYPE.BIRCH, load("res://Sprites/GrasslessTurrets/leaf_tree.png"))
 
 
 func create_button(type: Turret.TURRET_TYPE, icon: Texture2D) -> void:

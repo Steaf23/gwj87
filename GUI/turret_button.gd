@@ -11,8 +11,7 @@ signal drag_started(type: Turret.TURRET_TYPE)
 		icon = value
 		if not is_node_ready():
 			await ready
-		texture_rect.texture = texture_rect.texture.duplicate()
-		texture_rect.texture.atlas = icon
+		texture_rect.texture = icon
 
 var type: Turret.TURRET_TYPE = Turret.TURRET_TYPE.ACORN:
 	set(value):

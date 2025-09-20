@@ -28,7 +28,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 	},
 	Turret.TURRET_TYPE.MUSHROOM_MINE: {
 		"scene": preload("uid://1xsa55uxi1te"),
-		"name": "Mushroom Mine",
+		"name": "Fly Agaric",
 		"projectile_speed": 0,
 		"vision_range": 20,
 		"price": 1,
@@ -36,7 +36,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 	},
 	Turret.TURRET_TYPE.GROW_MUSHROOM: {
 		"scene": preload("uid://b6fxibbuh2g66"),
-		"name": "Grow Mushroom",
+		"name": "Entoloma Hochstetteri",
 		"projectile_speed": 0,
 		"vision_range": 0,
 		"price": 1,
@@ -56,7 +56,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"projectile_speed": 0,
 		"vision_range": 0,
 		"price": 1,
-		"description": "Sheds out leaves to claim more forest ground."
+		"description": "Spreads leaves around to claim more forest ground."
 	},
 	Turret.TURRET_TYPE.LEAVES: {
 		"scene": preload("uid://bo7m55ray0m1w")
