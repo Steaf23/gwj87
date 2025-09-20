@@ -20,7 +20,10 @@ signal target_changed(new_target: Enemy)
 @export var max_hp: int = 3
 @export var type: Turret.TURRET_TYPE
 
-@onready var hp: int = max_hp
+@onready var hp: int = max_hp:
+	set(value):
+		hp = value
+		$HpBar.current_hp = hp
 
 @onready var world: Node2D
 
@@ -28,6 +31,10 @@ var visible_targets: Array[Enemy] = []
 var current_target: Enemy = null
 
 var dead = false
+
+func _ready() -> void:
+	$HpBar.max_hp = max_hp
+	$HpBar.current_hp = hp
 
 func damage(amount: int) -> void:
 	if dead:

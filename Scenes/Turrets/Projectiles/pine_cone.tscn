@@ -22,7 +22,7 @@ texture = ExtResource("2_q6uha")
 
 [node name="DamageArea" parent="." index="2"]
 visible = false
-damage = 2
+damage = 4
 
 [node name="CollisionShape2D" parent="DamageArea" index="0"]
 shape = SubResource("CircleShape2D_1sfop")

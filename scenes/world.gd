@@ -45,6 +45,7 @@ func _input(event: InputEvent) -> void:
 			return
 
 		place_preview.hide()
+		%DropContainer.hide()
 		
 		var cell = $Ground.local_to_map($Ground.get_local_mouse_position())
 		if cell in turrets:
