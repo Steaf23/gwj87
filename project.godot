@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://jryvb3ylhgma"
 
 TurretData="*res://turret_data.gd"
 SoundManager="*res://Util/Autoload/sound_manager.tscn"
+Global="*res://global.gd"
 
 [display]
 

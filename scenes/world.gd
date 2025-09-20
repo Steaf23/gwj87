@@ -1,6 +1,8 @@
 class_name World
 extends Node2D
 
+@export var win_threshold: float = 40.0
+@export var level: int = 0
 
 var turrets: Dictionary[Vector2i, Node]
 
@@ -13,8 +15,11 @@ var turrets: Dictionary[Vector2i, Node]
 @onready var place_preview: Node2D = %PlacePreview
 @onready var grass: TileMapLayer = $Grass
 @onready var grass_percent: ProgressBar = %GrassPercent
+@onready var win_popup: CanvasLayer = $WinPopup
 
 @onready var placing_turret: Turret.TURRET_TYPE = Turret.TURRET_TYPE.NONE
+@onready var unlocked_final_wave: bool = false
+@onready var final_wave: bool = false
 
 
 var wave: int = 0
@@ -29,6 +34,8 @@ var player_points: int = 0:
 
 
 func _ready() -> void:
+	win_popup.hide()
+	grass_percent.max_value = win_threshold
 	player_points = 750
 	
 	for child in %Objects.get_children():
@@ -103,7 +110,7 @@ func update_preview() -> void:
 	
 
 func calculate_points() -> int:
-	var placed_turrets = %Objects.get_children().filter(func(t): return t is Turret and t.type != Turret.TURRET_TYPE.DEAD).size() - 1
+	var placed_turrets = %Objects.get_children().filter(func(t): return t is Turret and t.type != Turret.TURRET_TYPE.DEAD and t.type != Turret.TURRET_TYPE.LEAVES).size() - 1
 	return (placed_turrets * 2 + grass.get_used_cells().size()) * 100
 
 
@@ -113,6 +120,12 @@ func calculate_wave_budget() -> int:
 
 
 func _on_enemy_spawner_wave_cleared() -> void:
+	if final_wave and unlocked_final_wave:
+		if not is_complete(): # First time completion triggers popup to remind players they can play other maps.
+			win_popup.show()
+			
+		Global.levels_won[level] = wave
+	
 	player_points += calculate_points()
 	next_wave_budget = calculate_wave_budget()
 	wave_button.disabled = false
@@ -120,7 +133,6 @@ func _on_enemy_spawner_wave_cleared() -> void:
 	# TODO: DEBUG, REMOVE!
 	next_wave_budget = 5
 	
-
 
 func update_turret_buttons() -> void:
 	for b: TurretButton in %Buttons.get_children():
@@ -133,6 +145,10 @@ func _on_wave_button_pressed() -> void:
 	wave += 1
 	%Wave.text = "Wave " + str(wave)
 	SoundManager.play_sfx(Sounds.BUTTON_PRESS)
+	
+	if unlocked_final_wave and not final_wave:
+		final_wave = true
+		
 
 func cell_of_turret(turret: Turret) -> Vector2i:
 	assert(turret in turrets.values(), "Cannot get cell of a turret I don't own.")
@@ -181,7 +197,33 @@ func update_progress() -> void:
 	var total_cells = 11 * 20
 	
 	grass_percent.value = grass.get_used_cells().size() / float(total_cells) * 100
+	if grass_percent.value >= win_threshold:
+		enter_last_wave()
 
 
-func _on_foldable_container_folding_changed(is_folded: bool) -> void:
+func enter_last_wave() -> void:
+	if is_complete():
+		return
+		
+	grass_percent.indeterminate = true
+	unlocked_final_wave = true
+	wave_button.text = "Final Wave"
+
+
+func _on_foldable_container_folding_changed(_is_folded: bool) -> void:
 	SoundManager.play_sfx(Sounds.BUTTON_PRESS)
+
+
+func _on_map_select_pressed() -> void:
+	pass #TODO: add map select
+
+
+func _on_continue_pressed() -> void:
+	wave_button.text = "Next Wave"
+	win_popup.hide()
+	grass_percent.hide()
+	unlocked_final_wave = false
+
+
+func is_complete() -> bool:
+	return level in Global.levels_won
