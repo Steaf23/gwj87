@@ -11,3 +11,6 @@ type = 9
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_s3ic6")
+
+[node name="HpBar" parent="." index="3"]
+max_hp = 8

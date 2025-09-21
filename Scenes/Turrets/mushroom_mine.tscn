@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c1xj0adwmmnsc" path="res://Scenes/Turrets/turret.tscn" id="1_qvtip"]
 [ext_resource type="Texture2D" uid="uid://dx7m2s2ae1gc3" path="res://Sprites/fly_agaric.png" id="2_4uuli"]
 [ext_resource type="PackedScene" uid="uid://nkx7sbrvnbvx" path="res://Scenes/Turrets/damage_area.tscn" id="2_nwmos"]
-[ext_resource type="Script" uid="uid://b3ea1q17ecwnu" path="res://Scenes/Turrets/mushroom_mine.gd" id="2_nwtch"]
+[ext_resource type="Script" path="res://Scenes/Turrets/mushroom_mine.gd" id="2_nwtch"]
 [ext_resource type="PackedScene" uid="uid://cvxakdq78464w" path="res://Scenes/Turrets/explosion_trigger.tscn" id="3_4uuli"]
 [ext_resource type="Texture2D" uid="uid://dabdoqunh4vu1" path="res://Sprites/Animations/ExplosionRed/1.png" id="5_8413o"]
 [ext_resource type="Texture2D" uid="uid://d0nrqgj6e8kbi" path="res://Sprites/Animations/ExplosionRed/2.png" id="6_d3vk4"]
@@ -49,7 +49,7 @@ animations = [{
 script = ExtResource("2_nwtch")
 
 [node name="DamageArea" parent="." index="0" instance=ExtResource("2_nwmos")]
-damage = 10
+damage = 25
 effect = 1
 
 [node name="CollisionShape2D" parent="DamageArea" index="0"]

@@ -22,7 +22,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"scene": preload("uid://c8jqqylagwria"),
 		"name": "Pine Tree",
 		"projectile_speed": 45,
-		"vision_range": 70,
+		"vision_range": 75,
 		"price": 900,
 		"description": "Chucks pine cones towards trespassers that explode on impact.",
 	},

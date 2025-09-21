@@ -89,7 +89,7 @@ move_speed = 8
 max_hp = 80
 
 [node name="StunTimer" parent="." index="7"]
-wait_time = 0.2
+wait_time = 0.1
 
 [node name="SoundPlayer" parent="." index="8"]
 type = 3

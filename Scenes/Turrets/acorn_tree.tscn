@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://chyj1cgow8vvi" path="res://Sprites/acorn_tree.png" id="4_nmtts"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jnrr5"]
-radius = 75.0
+radius = 85.0
 
 [node name="AcornTree" instance=ExtResource("1_6dw2f")]
+max_hp = 4
 type = 1
 
 [node name="CollisionShape2D" parent="VisionRange" index="0"]

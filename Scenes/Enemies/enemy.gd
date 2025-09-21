@@ -58,7 +58,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		if is_instance_valid(body):
 			body.damage(damage)
 			if body.type == Turret.TURRET_TYPE.ELDER:
-				take_damage(2)
+				take_damage(30)
 		attack_started.emit($%AttackCooldown.wait_time * 0.7)
 		
 		

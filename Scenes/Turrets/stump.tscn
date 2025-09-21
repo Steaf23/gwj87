@@ -17,9 +17,6 @@ offset = Vector2(16, 16)
 texture = ExtResource("3_y617m")
 offset = Vector2(16, 16)
 
-[node name="ProgressBar" parent="HpBar" index="0"]
-mouse_filter = 2
-
 [node name="KillReward" type="Node2D" parent="." index="5" node_paths=PackedStringArray("turret")]
 script = ExtResource("4_es35e")
 turret = NodePath("..")

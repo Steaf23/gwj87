@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8g4a4pm3f5xp" path="res://Scenes/Turrets/Projectiles/pine_cone.tscn" id="4_tddsd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xyljs"]
-radius = 65.0
+radius = 75.0
 
 [node name="PineTree" instance=ExtResource("1_tjcsw")]
 type = 3
