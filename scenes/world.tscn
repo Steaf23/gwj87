@@ -303,6 +303,16 @@ texture_over = ExtResource("9_7yui6")
 texture_progress = ExtResource("11_e0ngr")
 texture_progress_offset = Vector2(28, 0)
 
+[node name="CompleteLabel" type="Label" parent="CanvasLayer/BarContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Complete!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BarPanel" type="Panel" parent="CanvasLayer/BarContainer"]
 custom_minimum_size = Vector2(352, 64)
 layout_mode = 2

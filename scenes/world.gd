@@ -209,8 +209,8 @@ func update_progress() -> void:
 func enter_last_wave() -> void:
 	if is_complete():
 		return
-		
-	grass_percent.indeterminate = true
+	
+	%CompleteLabel.show()
 	unlocked_final_wave = true
 	wave_button.text = "Final Wave"
 
