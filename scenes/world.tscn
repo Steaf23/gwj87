@@ -103,7 +103,7 @@ expand_margin_bottom = 10.0
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_nnsk1")
-win_threshold = 1.0
+win_threshold = 30.0
 level = 1
 
 [node name="EnemySpawner" type="Node2D" parent="."]
@@ -150,7 +150,7 @@ position = Vector2(288, 32)
 input_pickable = false
 
 [node name="Stump3" parent="Objects" instance=ExtResource("5_fo5ed")]
-position = Vector2(480, 224)
+position = Vector2(512, 288)
 input_pickable = false
 
 [node name="RangeChecker" type="Node2D" parent="Objects"]

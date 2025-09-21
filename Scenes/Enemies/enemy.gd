@@ -90,11 +90,13 @@ func take_damage(_amount: int, damage_effect: DAMAGE_EFFECT = DAMAGE_EFFECT.NONE
 		DAMAGE_EFFECT.STUN:
 			$StunTimer.start()
 			stunned = true
+			$StunSprite.show()
 			$Sprite2D.pause()
 
 
 func _on_stun_timer_timeout() -> void:
 	stunned = false
+	$StunSprite.hide()
 	$Sprite2D.play()
 	for b in $HitBox.get_overlapping_bodies():
 		_on_hit_box_body_entered(b)

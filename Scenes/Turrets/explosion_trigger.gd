@@ -7,6 +7,8 @@ extends Node
 @export var explode_turret: bool = true
 @onready var startup_timer: Timer = $StartupTimer
 
+var exploded: bool = false
+
 func _ready() -> void:
 	assert(turret and damage_area, "This trigger requires a turret and damage area to function")
 	
@@ -18,6 +20,12 @@ func _ready() -> void:
 		)
 	
 func explode(target: Enemy = null) -> void:
+	if exploded:
+		return
+		
+	if explode_turret:
+		exploded = true
+	
 	if not target or not single_target:
 		damage_area.trigger()
 	else:

@@ -119,7 +119,10 @@ func update_preview() -> void:
 	if is_invalid_turret_cell(cell):
 		place_preview.color = Color("d8335cff")
 	else:
-		place_preview.color = Color("#00d83d")
+		if is_cell_stump(cell):
+			place_preview.color = Color("ffd343ff")
+		else:
+			place_preview.color = Color("#00d83d")
 	
 
 func calculate_points() -> int:
@@ -240,6 +243,9 @@ func is_invalid_turret_cell(cell: Vector2i) -> bool:
 	var elder_cell = cell_of_turret(elder) == cell
 	return oob or boulder or elder_cell
 
+
+func is_cell_stump(cell: Vector2i) -> bool:
+	return cell in turrets and turrets[cell].type == Turret.TURRET_TYPE.DEAD
 
 func _on_turret_clicked(turret: Turret) -> void:
 	if selected_turret == turret:

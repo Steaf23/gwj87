@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://e4vbn7ci3egb" path="res://Scenes/Turrets/explosion_trigger.gd" id="1_2uyy8"]
 
-[node name="ExplosionTrigger" type="Node" node_paths=PackedStringArray("turret", "damage_area")]
+[node name="ExplosionTrigger" type="Node"]
 script = ExtResource("1_2uyy8")
-turret = NodePath("")
-damage_area = NodePath("")
 
 [node name="StartupTimer" type="Timer" parent="."]
 one_shot = true
