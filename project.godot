@@ -50,10 +50,12 @@ pause={
 
 [layer_names]
 
+2d_render/layer_12="Layer 12"
 2d_physics/layer_1="tree"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="projectile"
 2d_physics/layer_11="enemy hurt"
+2d_physics/layer_12="boulder"
 
 [rendering]
 

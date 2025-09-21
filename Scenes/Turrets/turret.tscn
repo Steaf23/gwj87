@@ -11,7 +11,7 @@ size = Vector2(28, 28)
 bg_color = Color(0.14509805, 0.14509805, 0.14509805, 0.6666667)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgy8o"]
-bg_color = Color(0.772549, 0.176471, 0.156863, 1)
+bg_color = Color(0.1254902, 0.8039216, 0.03529412, 1)
 
 [node name="Turret" type="StaticBody2D"]
 input_pickable = true
@@ -49,6 +49,7 @@ offset_right = 34.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_4e353")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dgy8o")
 value = 30.0
