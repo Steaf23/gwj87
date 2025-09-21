@@ -49,7 +49,7 @@ animations = [{
 script = ExtResource("2_nwtch")
 
 [node name="DamageArea" parent="." index="0" instance=ExtResource("2_nwmos")]
-damage = 25
+damage = 35
 effect = 1
 
 [node name="CollisionShape2D" parent="DamageArea" index="0"]

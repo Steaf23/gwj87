@@ -6,7 +6,7 @@
 
 [node name="Elder" groups=["elder_tree"] instance=ExtResource("1_rw0k3")]
 y_sort_enabled = true
-max_hp = 50
+max_hp = 30
 type = 4
 
 [node name="VisionRange" parent="." index="0"]
