@@ -20,6 +20,10 @@ func spread() -> void:
 				world.set_grass(cell, true)
 	else:
 		var pile = world.add_turret(Turret.TURRET_TYPE.LEAVES, cell, false)
+		
+		assert(pile)
+		if not pile:
+			return
 		pile.stage = 0
 	
 		
@@ -30,6 +34,9 @@ func get_available_cells() -> Array[Vector2i]:
 	for y in 3:
 		for x in 3:
 			var cell = this_cell - Vector2i.ONE + Vector2i(x, y)
+			
+			if world.is_invalid_turret_cell(cell):
+				continue
 			if cell in world.turrets:
 				var turret: Turret = world.turrets[cell]
 				if turret is LeafPile and turret.stage < turret.max_stage:

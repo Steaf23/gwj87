@@ -17,6 +17,7 @@ enum TURRET_TYPE {
 
 signal died()
 signal target_changed(new_target: Enemy)
+signal turret_clicked()
 
 @export var max_hp: int = 3
 @export var type: Turret.TURRET_TYPE
@@ -69,3 +70,8 @@ func update_target() -> void:
 		current_target = null
 	
 	target_changed.emit(current_target)
+
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		turret_clicked.emit()

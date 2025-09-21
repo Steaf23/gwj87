@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://do87i5f61fatu"]
+
+[ext_resource type="Script" uid="uid://cx2dcw3l0hx7l" path="res://Scenes/level_button.gd" id="1_iapje"]
+
+[node name="LevelButton" type="MarginContainer"]
+offset_top = 224.0
+offset_right = 640.0
+offset_bottom = 224.0
+script = ExtResource("1_iapje")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="LevelButton" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="LevelButton"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "Play"
+
+[node name="Completed" type="Label" parent="LevelButton"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Completed!"
+horizontal_alignment = 1

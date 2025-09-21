@@ -14,6 +14,7 @@ bg_color = Color(0.14509805, 0.14509805, 0.14509805, 0.6666667)
 bg_color = Color(0.772549, 0.176471, 0.156863, 1)
 
 [node name="Turret" type="StaticBody2D"]
+input_pickable = true
 script = ExtResource("1_el7wl")
 
 [node name="VisionRange" type="Area2D" parent="."]
@@ -54,5 +55,6 @@ value = 30.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
 [connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]

@@ -5,30 +5,30 @@
 [ext_resource type="PackedScene" uid="uid://nkx7sbrvnbvx" path="res://Scenes/Turrets/damage_area.tscn" id="2_nwmos"]
 [ext_resource type="PackedScene" uid="uid://cvxakdq78464w" path="res://Scenes/Turrets/explosion_trigger.tscn" id="3_4uuli"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pyqhi"]
-radius = 20.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_4uuli"]
 radius = 50.01
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pyqhi"]
+radius = 20.0
 
 [node name="MushroomMine" instance=ExtResource("1_qvtip")]
 max_hp = 1
 type = 6
 
-[node name="CollisionShape2D" parent="VisionRange" index="0"]
-shape = SubResource("CircleShape2D_pyqhi")
-
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(16, 17.5)
-shape = null
-
-[node name="DamageArea" parent="." index="2" instance=ExtResource("2_nwmos")]
+[node name="DamageArea" parent="." index="0" instance=ExtResource("2_nwmos")]
 damage = 10
 effect = 1
 
 [node name="CollisionShape2D" parent="DamageArea" index="0"]
 position = Vector2(16, 16)
 shape = SubResource("CircleShape2D_4uuli")
+
+[node name="CollisionShape2D" parent="VisionRange" index="0"]
+shape = SubResource("CircleShape2D_pyqhi")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(16, 17.5)
+shape = null
 
 [node name="Sprite2D" parent="." index="3"]
 texture = ExtResource("2_4uuli")

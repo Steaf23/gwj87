@@ -13,9 +13,11 @@ var turrets: Dictionary[Vector2i, Node]
 @onready var wave_button: Button = %WaveButton
 @onready var enemy_spawner: EnemySpawner = $EnemySpawner
 @onready var place_preview: Node2D = %PlacePreview
+@onready var range_checker: Node2D = %RangeChecker
 @onready var grass: TileMapLayer = $Grass
-@onready var grass_percent: ProgressBar = %GrassPercent
+@onready var grass_percent: TextureProgressBar = %GrassPercent
 @onready var win_popup: CanvasLayer = $WinPopup
+@onready var boulders: TileMapLayer = $Boulders
 
 @onready var placing_turret: Turret.TURRET_TYPE = Turret.TURRET_TYPE.NONE
 @onready var unlocked_final_wave: bool = false
@@ -32,8 +34,12 @@ var player_points: int = 0:
 		
 		update_turret_buttons()
 
+var selected_turret: Turret = null
 
 func _ready() -> void:
+	for c in boulders.get_used_cells():
+		ground.set_cell(c, 0, Vector2i.ZERO)
+	
 	win_popup.hide()
 	grass_percent.max_value = win_threshold
 	player_points = 750
@@ -106,7 +112,13 @@ func update_preview() -> void:
 	if not place_preview.is_visible():
 		return
 	
-	place_preview.global_position = ground.map_to_local(ground.local_to_map(get_global_mouse_position())) 
+	var cell = ground.local_to_map(get_global_mouse_position())
+	place_preview.global_position = ground.map_to_local(cell)
+	
+	if is_invalid_turret_cell(cell):
+		place_preview.color = Color("d8335cff")
+	else:
+		place_preview.color = Color("#00d83d")
 	
 
 func calculate_points() -> int:
@@ -120,12 +132,10 @@ func calculate_wave_budget() -> int:
 
 
 func _on_enemy_spawner_wave_cleared() -> void:
-	if final_wave and unlocked_final_wave:
-		if not is_complete(): # First time completion triggers popup to remind players they can play other maps.
-			win_popup.show()
-			
-		Global.levels_won[level] = wave
-	
+	if final_wave and unlocked_final_wave and not is_complete():
+		win_popup.show()
+		Global.win_level(level, wave)
+		
 	player_points += calculate_points()
 	next_wave_budget = calculate_wave_budget()
 	wave_button.disabled = false
@@ -161,18 +171,16 @@ func cell_of_turret(turret: Turret) -> Vector2i:
 
 
 func add_turret(type: Turret.TURRET_TYPE, cell: Vector2i, add_grass: bool) -> Turret:
-	if cell.x < 0 or cell.y < 0 or cell.x > 19 or cell.y > 10:
+	if is_invalid_turret_cell(cell):
 		return null
 		
 	if cell in turrets:
-		if turrets[cell] == elder:
-			return null
-		# TODO: kill turret properly
 		turrets[cell].queue_free()
 		turrets.erase(cell)
 	
-	var turret = TurretData.turrets[type].scene.instantiate()
+	var turret: Turret = TurretData.turrets[type].scene.instantiate()
 	turret.died.connect(_on_turret_died.bind(turret))
+	turret.turret_clicked.connect(_on_turret_clicked.bind(turret))
 	turret.world = self
 	%Objects.add_child.call_deferred(turret)
 	turrets[cell] = turret
@@ -215,7 +223,7 @@ func _on_foldable_container_folding_changed(_is_folded: bool) -> void:
 
 
 func _on_map_select_pressed() -> void:
-	pass #TODO: add map select
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 
 func _on_continue_pressed() -> void:
@@ -226,4 +234,22 @@ func _on_continue_pressed() -> void:
 
 
 func is_complete() -> bool:
-	return level in Global.levels_won
+	return Global.get_completed_wave(level) != -1
+
+
+func is_invalid_turret_cell(cell: Vector2i) -> bool:
+	var oob = cell.x < 0 or cell.y < 0 or cell.x > 19 or cell.y > 10
+	var boulder = cell in boulders.get_used_cells()
+	var elder_cell = cell_of_turret(elder) == cell
+	return oob or boulder or elder_cell
+
+
+func _on_turret_clicked(turret: Turret) -> void:
+	if selected_turret == turret:
+		range_checker.hide()
+		selected_turret = null
+	else:
+		range_checker.radius = TurretData.turrets[turret.type].vision_range
+		range_checker.global_position = turret.global_position + Vector2(grass.tile_set.tile_size) / 2
+		range_checker.show()
+		selected_turret = turret

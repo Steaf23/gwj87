@@ -28,7 +28,7 @@ func spawn() -> void:
 	%Objects.add_child(enemy)
 	if not enemy.is_node_ready():
 		await enemy.ready
-	enemy.global_position = global_position
+	enemy.global_position = get_random_spawn()
 	enemy.ai_controller.navigation_target = %Objects/Elder
 	enemy.died.connect(_on_enemy_died.bind(enemy))
 	spawn_counter += 1
@@ -49,3 +49,9 @@ func _on_enemy_died(enemy: Enemy) -> void:
 			wave_active = false
 			wave_cleared.emit()
 	
+
+func get_random_spawn() -> Vector2i:
+	if %Markers.get_child_count() == 0:
+		return global_position
+	else:
+		return %Markers.get_children().pick_random().global_position

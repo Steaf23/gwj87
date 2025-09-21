@@ -43,7 +43,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	var texture = TextureRect.new()
 	prev.add_child(texture)
 	texture.texture = texture_rect.texture
-	texture.position += Vector2(-24, -24 - 16)
+	texture.position += Vector2(-24, -24 - 32)
 	texture.modulate = Color(1.0, 1.0, 1.0, 0.7)
 	set_drag_preview(prev)
 	drag_started.emit(type)

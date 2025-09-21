@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GWJ87"
-run/main_scene="uid://cb5ogx63v83yx"
+run/main_scene="uid://co637quvudisn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -35,6 +35,10 @@ window/stretch/scale_mode="integer"
 [global_group]
 
 elder_tree=""
+
+[gui]
+
+theme/custom_font="uid://cdtux5lmvkma7"
 
 [input]
 

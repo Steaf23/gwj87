@@ -19,7 +19,6 @@ atlas = ExtResource("1_c0jyt")
 region = Rect2(8, 48, 48, 48)
 
 [sub_resource type="LabelSettings" id="LabelSettings_c0jyt"]
-font_size = 10
 
 [node name="TurretButton" type="MarginContainer"]
 offset_right = 40.0
