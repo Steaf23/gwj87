@@ -1,8 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://co637quvudisn"]
+[gd_scene load_steps=10 format=3 uid="uid://co637quvudisn"]
 
 [ext_resource type="Script" uid="uid://5x5nlvx5pomq" path="res://menu.gd" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://dt6i5h26qfhub" path="res://Sprites/UI/background.png" id="2_cayip"]
 [ext_resource type="PackedScene" uid="uid://ux1lgkuk6mvl" path="res://Util/SoundManager/volume_settings.tscn" id="3_158mb"]
+[ext_resource type="PackedScene" uid="uid://on6c8msmh7ae" path="res://Scenes/Enemies/fire.tscn" id="3_wwsa2"]
+
+[sub_resource type="Curve" id="Curve_e417a"]
+_data = [Vector2(0, 0.5304532), 0.0, 0.0, 0, 0, Vector2(0.28719723, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4y56m"]
+curve = SubResource("Curve_e417a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jsrd8"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+spread = 63.396
+initial_velocity_min = 54.92
+initial_velocity_max = 73.35
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_4y56m")
+turbulence_enabled = true
+turbulence_noise_strength = 0.73
+turbulence_noise_scale = 7.636
+turbulence_noise_speed_random = 0.12
+turbulence_influence_min = 0.041
+turbulence_influence_max = 0.117000006
+turbulence_initial_displacement_min = -40.8
+turbulence_initial_displacement_max = -21.599998
 
 [sub_resource type="LabelSettings" id="LabelSettings_cayip"]
 font_size = 48
@@ -29,9 +59,16 @@ grow_vertical = 2
 script = ExtResource("1_xhh6f")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.5137255)
+modulate = Color(1, 1, 1, 0.7372549)
 layout_mode = 2
 texture = ExtResource("2_cayip")
+
+[node name="Fire" parent="TextureRect" instance=ExtResource("3_wwsa2")]
+position = Vector2(366, 188)
+scale = Vector2(2, 2)
+emitting = true
+one_shot = false
+process_material = SubResource("ParticleProcessMaterial_jsrd8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

@@ -52,7 +52,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 	},
 	Turret.TURRET_TYPE.BIRCH: {
 		"scene": preload("uid://dsr172t8pg7nl"),
-		"name": "BIRCH Tree",
+		"name": "Birch Tree",
 		"projectile_speed": 0,
 		"vision_range": 0,
 		"price": 1,
