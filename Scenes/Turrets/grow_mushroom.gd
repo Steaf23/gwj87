@@ -20,10 +20,20 @@ func damage(_amount: int) -> void:
 	hp = clamp(hp - _amount, 0, max_hp)
 	if hp <= 0:
 		$CollisionShape2D.set_deferred("disabled", true)
-	damage_area.trigger()
 	SoundManager.play_random_sfx(Sounds.MUSHROOM_EXPLODE, 0.5)
 	%GrowTimer.start()
+	explode_head(hp + 1)
+	
+
+func explode_head(head: int) -> void:
+	var explosion = preload("res://Scenes/Turrets/blue_explosion.tscn").instantiate()
+	$HeadPositions.get_node(str(head)).add_child(explosion)
+	
+	await get_tree().create_timer(0.3).timeout
+	
+	damage_area.trigger()
 	update_stage()
+	
 
 
 func _process(_delta: float) -> void:

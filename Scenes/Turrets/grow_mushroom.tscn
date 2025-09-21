@@ -119,7 +119,24 @@ max_value = 1.0
 value = 0.5
 show_percentage = false
 
-[node name="HpBar" parent="." index="5"]
+[node name="HeadPositions" type="Node2D" parent="." index="5"]
+
+[node name="1" type="Marker2D" parent="HeadPositions" index="0"]
+position = Vector2(15, 15)
+
+[node name="2" type="Marker2D" parent="HeadPositions" index="1"]
+position = Vector2(23, 13)
+
+[node name="3" type="Marker2D" parent="HeadPositions" index="2"]
+position = Vector2(20, 6)
+
+[node name="4" type="Marker2D" parent="HeadPositions" index="3"]
+position = Vector2(6, 11)
+
+[node name="5" type="Marker2D" parent="HeadPositions" index="4"]
+position = Vector2(12, 1)
+
+[node name="HpBar" parent="." index="6"]
 visible = false
 
 [connection signal="timeout" from="GrowController/GrowTimer" to="." method="_on_grow_timer_timeout"]

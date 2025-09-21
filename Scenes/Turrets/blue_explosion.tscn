@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://clar0fuwy3hw4"]
+
+[ext_resource type="Texture2D" uid="uid://buwi3b72j5amh" path="res://Sprites/Animations/ExplosionBlue/1.png" id="1_pvicn"]
+[ext_resource type="Texture2D" uid="uid://cvt1vcrc7lpqn" path="res://Sprites/Animations/ExplosionBlue/2.png" id="2_buaev"]
+[ext_resource type="Texture2D" uid="uid://drvihpqhir13" path="res://Sprites/Animations/ExplosionBlue/3.png" id="3_h8an1"]
+[ext_resource type="Texture2D" uid="uid://bm8b1l7n81fp6" path="res://Sprites/Animations/ExplosionBlue/4.png" id="4_yeq5d"]
+[ext_resource type="Texture2D" uid="uid://bm8t5nn5w4nml" path="res://Sprites/Animations/ExplosionBlue/5.png" id="5_yndod"]
+[ext_resource type="Script" uid="uid://24s8d3kqa15w" path="res://Scenes/Turrets/blue_explosion.gd" id="6_buaev"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxmk1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pvicn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_buaev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h8an1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yeq5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yndod")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BlueExplosion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hxmk1")
+autoplay = "default"
+offset = Vector2(0, -32)
+script = ExtResource("6_buaev")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
