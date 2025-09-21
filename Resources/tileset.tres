@@ -1,9 +1,11 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://blkvhyot7eq0s"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://blkvhyot7eq0s"]
 
 [ext_resource type="Texture2D" uid="uid://cylvu0nogu3q8" path="res://Sprites/boulder_mud.png" id="1_nskq1"]
 [ext_resource type="Texture2D" uid="uid://dep1us0h4yokr" path="res://Sprites/mud.png" id="1_pt5g4"]
 [ext_resource type="Texture2D" uid="uid://cjel4oqytg6be" path="res://Sprites/grass.png" id="2_h1ul7"]
-[ext_resource type="Texture2D" uid="uid://cbxbyebrhpcub" path="res://Sprites/boulder_top.png" id="4_ghhq2"]
+[ext_resource type="Texture2D" uid="uid://dgodgt5podvxb" path="res://Sprites/boulder_top_1.png" id="4_w1qkc"]
+[ext_resource type="Texture2D" uid="uid://douob4hy3ftk" path="res://Sprites/boulder_top_2.png" id="5_lk1ne"]
+[ext_resource type="Texture2D" uid="uid://c04bbjgjnqe0y" path="res://Sprites/boulder_top_3.png" id="6_u5sny"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1qkc"]
 texture = ExtResource("1_nskq1")
@@ -28,7 +30,17 @@ texture_region_size = Vector2i(64, 64)
 0:0/0/y_sort_origin = -2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lk1ne"]
-texture = ExtResource("4_ghhq2")
+texture = ExtResource("4_w1qkc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnkjj"]
+texture = ExtResource("5_lk1ne")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwp54"]
+texture = ExtResource("6_u5sny")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
@@ -38,3 +50,5 @@ sources/1 = SubResource("TileSetAtlasSource_71j4m")
 sources/2 = SubResource("TileSetAtlasSource_qfnet")
 sources/0 = SubResource("TileSetAtlasSource_w1qkc")
 sources/3 = SubResource("TileSetAtlasSource_lk1ne")
+sources/4 = SubResource("TileSetAtlasSource_dnkjj")
+sources/5 = SubResource("TileSetAtlasSource_pwp54")

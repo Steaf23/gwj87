@@ -39,6 +39,7 @@ var selected_turret: Turret = null
 func _ready() -> void:
 	for c in boulders.get_used_cells():
 		ground.set_cell(c, 0, Vector2i.ZERO)
+		boulders.set_cell(c, 3 + randi() % 3, Vector2i.ZERO)
 	
 	win_popup.hide()
 	grass_percent.max_value = win_threshold
