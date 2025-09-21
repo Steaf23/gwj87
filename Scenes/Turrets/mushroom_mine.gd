@@ -11,7 +11,7 @@ func _on_explosion_trigger_explosion_started() -> void:
 	$ExplosionSprite.play("explode")
 	$Sprite2D.hide()
 	
-	SoundManager.play_random_sfx(Sounds.MUSHROOM_EXPLODE, 0.7)
+	SoundManager.play_sfx(Sounds.EXPLOSION, 0.4)
 	
 	await get_tree().create_timer(0.4).timeout
 	$DamageArea.trigger()
