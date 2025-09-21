@@ -31,7 +31,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Fly Agaric",
 		"projectile_speed": 0,
 		"vision_range": 20,
-		"price": 300,
+		"price": 350,
 		"description": "Explodes when tresspassers approach it."
 	},
 	Turret.TURRET_TYPE.ROOTS: {
