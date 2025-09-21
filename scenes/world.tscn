@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cb5ogx63v83yx"]
+[gd_scene load_steps=28 format=4 uid="uid://cb5ogx63v83yx"]
 
 [ext_resource type="Script" uid="uid://i47uqdvpsp6c" path="res://Scenes/world.gd" id="1_nnsk1"]
 [ext_resource type="TileSet" uid="uid://blkvhyot7eq0s" path="res://Resources/tileset.tres" id="2_k0juu"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bqvfloija1hw8" path="res://Sprites/UI/percent_bar_back.png" id="9_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://d0pwau4w45s2f" path="res://Util/pause_menu.tscn" id="10_0fj1v"]
 [ext_resource type="Texture2D" uid="uid://vpcm8o8ie7k2" path="res://Sprites/UI/percent_bar_progress.png" id="11_e0ngr"]
-[ext_resource type="PackedScene" uid="uid://on6c8msmh7ae" path="res://Scenes/Enemies/fire.tscn" id="11_ikia7"]
 [ext_resource type="Script" uid="uid://dkxwt1xc0k8eo" path="res://Scenes/bar_panel.gd" id="12_kn0ld"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rwgxs"]
@@ -439,6 +438,7 @@ anchor_bottom = 0.0
 offset_top = -170.0
 offset_bottom = 830.0
 grow_vertical = 1
+color = Color(0, 0, 0, 0.7058824)
 
 [node name="MapSelect" type="Button" parent="PauseLayer/PauseMenu/MarginContainer2/HBoxContainer" index="1"]
 layout_mode = 2
@@ -446,11 +446,6 @@ text = "Play a different map"
 
 [node name="Control2" type="Control" parent="PauseLayer/PauseMenu"]
 layout_mode = 2
-
-[node name="Fire" parent="." instance=ExtResource("11_ikia7")]
-position = Vector2(-585, -80)
-emitting = true
-one_shot = false
 
 [connection signal="wave_cleared" from="EnemySpawner" to="." method="_on_enemy_spawner_wave_cleared"]
 [connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

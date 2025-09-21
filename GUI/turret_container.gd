@@ -14,12 +14,11 @@ func _ready() -> void:
 	description.hide()
 	create_button(Turret.TURRET_TYPE.ACORN, load("res://Sprites/GrasslessTurrets/acorn_tree.png"))
 	create_button(Turret.TURRET_TYPE.CHESTNUT, load("res://Sprites/GrasslessTurrets/chestnut_tree.png"))
-	create_button(Turret.TURRET_TYPE.CONE, load("res://Sprites/GrasslessTurrets/cone_tree.png"))
 	create_button(Turret.TURRET_TYPE.MUSHROOM_MINE, load("res://Sprites/GrasslessTurrets/fly_agaric.png"))
-	create_button(Turret.TURRET_TYPE.GROW_MUSHROOM, load("res://Sprites/GrasslessTurrets/entoloma_hochstetteri.png"))
 	create_button(Turret.TURRET_TYPE.ROOTS, load("res://Sprites/GrasslessTurrets/root_cluster.png"))
+	create_button(Turret.TURRET_TYPE.CONE, load("res://Sprites/GrasslessTurrets/cone_tree.png"))
 	create_button(Turret.TURRET_TYPE.BIRCH, load("res://Sprites/GrasslessTurrets/leaf_tree.png"))
-
+	create_button(Turret.TURRET_TYPE.GROW_MUSHROOM, load("res://Sprites/GrasslessTurrets/entoloma_hochstetteri.png"))
 
 func create_button(type: Turret.TURRET_TYPE, icon: Texture2D) -> void:
 	var turret: TurretButton = TURRET_BUTTON.instantiate()
