@@ -4,6 +4,7 @@ enum TYPE {
 	AXE,
 	SAW,
 	FLAME,
+	BULLDOZER,
 }
 
 @export var type: TYPE

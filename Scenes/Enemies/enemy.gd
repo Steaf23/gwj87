@@ -14,6 +14,7 @@ signal attack_started(attack_duration: float)
 
 @onready var ai_controller: AIController = $AIController
 @onready var attack_cooldown: Timer = %AttackCooldown
+@onready var hit_box: Area2D = $HitBox
 
 var attacking: bool = false
 var stunned: bool = false
@@ -28,9 +29,15 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	if get_real_velocity().x < -0.1:
-		$Sprite2D.scale.x = -1.0
+		flip_sprite(true)
 	elif get_real_velocity().x > 0.1:
-		$Sprite2D.scale.x = 1.0
+		flip_sprite(false)
+
+
+func flip_sprite(flip: bool) -> void:
+	var val = -1.0 if flip else 1.0
+	$Sprite2D.scale.x = val
+	hit_box.scale.x = val
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
@@ -51,7 +58,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		attack_started.emit($%AttackCooldown.wait_time * 0.7)
 		
 		
-		$Sprite2D.scale.x = -1.0 if body_pos.x < global_position.x else 1.0
+		flip_sprite(body_pos.x < global_position.x)
 		$Sprite2D.play("swing")
 		$HitBox/CollisionShape2D.set_deferred("disabled", true)
 		attacking = true

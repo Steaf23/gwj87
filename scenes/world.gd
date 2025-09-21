@@ -48,6 +48,7 @@ func _ready() -> void:
 	for child in %Objects.get_children():
 		if child is Turret:
 			child.died.connect(_on_turret_died.bind(child))
+			child.world = self
 			turrets[$Ground.local_to_map($Ground.to_local(child.global_position))] = child
 	
 	SoundManager.play_music(Sounds.MUSIC_GAME)
@@ -94,7 +95,6 @@ func _on_turret_died(turret: Turret) -> void:
 	for cell in turrets.keys():
 		var t = turrets[cell]
 		if t == turret:
-			turrets[cell].queue_free()
 			turrets.erase(cell)
 			break
 	
@@ -173,9 +173,8 @@ func add_turret(type: Turret.TURRET_TYPE, cell: Vector2i, add_grass: bool) -> Tu
 		return null
 		
 	if cell in turrets:
-		turrets[cell].queue_free()
-		turrets.erase(cell)
-	
+		turrets[cell].kill()
+
 	var turret: Turret = TurretData.turrets[type].scene.instantiate()
 	turret.died.connect(_on_turret_died.bind(turret))
 	turret.turret_clicked.connect(_on_turret_clicked.bind(turret))
