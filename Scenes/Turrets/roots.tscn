@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cccrkss4ncdbd" path="res://Sprites/root_cluster.png" id="2_cejsr"]
 
 [node name="Roots" instance=ExtResource("1_48naw")]
-max_hp = 30
+max_hp = 50
 type = 8
 
 [node name="Sprite2D" parent="." index="2"]
