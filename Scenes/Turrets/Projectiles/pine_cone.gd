@@ -1,6 +1,8 @@
 extends ImpactProjectile
 
 func _lifespan_reached():
+	if dead:
+		return
 	damage_area.trigger()
 
 

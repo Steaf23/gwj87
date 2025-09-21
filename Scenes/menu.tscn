@@ -58,7 +58,10 @@ scale_curve = SubResource("CurveTexture_1sfop")
 color_ramp = SubResource("GradientTexture1D_1sfop")
 
 [sub_resource type="LabelSettings" id="LabelSettings_cayip"]
-font_size = 48
+font_size = 64
+font_color = Color(1, 0.7343737, 0.6896248, 1)
+outline_size = 10
+outline_color = Color(0.18309289, 0.044628143, 0.021558972, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
 bg_color = Color(0, 0, 0, 0.37254903)
@@ -107,7 +110,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Forest Game"
+text = "Fragile Autumn"
 label_settings = SubResource("LabelSettings_cayip")
 horizontal_alignment = 1
 

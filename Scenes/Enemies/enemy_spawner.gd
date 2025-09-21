@@ -72,7 +72,7 @@ func get_random_spawn() -> Node2D:
 
 # returns list of used spawn points
 func build_wave_spawns(budget: int) -> Array[Node2D]:
-	print("Building wave with budget: ", budget)
+	#print("Building wave with budget: ", budget)
 	var full_budget = budget
 	var enemy_list: Array[PackedScene] = []
 	while full_budget > 0:
@@ -114,7 +114,7 @@ func build_wave_spawns(budget: int) -> Array[Node2D]:
 			wave_spawns.append({"pos": group_spawn, "enemy": pkd_scn})
 	
 	amount_to_spawn = wave_spawns.size()
-	print("Spawning enemies in %s groups and spawning %s enemies in total." % [groups.size(), wave_spawns.size()])
+	#print("Spawning enemies in %s groups and spawning %s enemies in total." % [groups.size(), wave_spawns.size()])
 	
 	return spawn_list
 	
