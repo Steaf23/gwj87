@@ -1,6 +1,8 @@
 class_name World
 extends Node2D
 
+const WARNING = preload("uid://bgngxofoeqm0x")
+
 @export var win_threshold: float = 40.0
 @export var level: int = 0
 
@@ -18,6 +20,7 @@ var turrets: Dictionary[Vector2i, Node]
 @onready var grass_percent: TextureProgressBar = %GrassPercent
 @onready var win_popup: CanvasLayer = $WinPopup
 @onready var boulders: TileMapLayer = $Boulders
+@onready var warnings: Node2D = %Warnings
 
 @onready var placing_turret: Turret.TURRET_TYPE = Turret.TURRET_TYPE.NONE
 @onready var unlocked_final_wave: bool = false
@@ -53,6 +56,10 @@ func _ready() -> void:
 	
 	SoundManager.play_music(Sounds.MUSIC_GAME)
 	SoundManager.play_ambient(Sounds.AMBIENT)
+	
+	var pts = enemy_spawner.prepare_wave(next_wave_budget)
+	show_warning(pts)
+	wave_button.disabled = false
 
 
 func _input(event: InputEvent) -> void:
@@ -142,6 +149,8 @@ func _on_enemy_spawner_wave_cleared() -> void:
 		
 	player_points += calculate_points()
 	next_wave_budget = calculate_wave_budget()
+	var pts = enemy_spawner.prepare_wave(next_wave_budget)
+	show_warning(pts)
 	wave_button.disabled = false
 	
 
@@ -151,7 +160,8 @@ func update_turret_buttons() -> void:
 			
 
 func _on_wave_button_pressed() -> void:
-	enemy_spawner.start_wave(next_wave_budget)
+	hide_warning()
+	enemy_spawner.start_wave()
 	wave_button.disabled = true
 	wave += 1
 	%Wave.text = "Wave " + str(wave)
@@ -201,7 +211,6 @@ func set_grass(cell: Vector2i, value: bool) -> void:
 
 
 func update_progress() -> void:
-	# TODO: subtract boulder tiles
 	var total_cells = 11 * 20
 	
 	grass_percent.value = grass.get_used_cells().size() / float(total_cells) * 100
@@ -264,3 +273,28 @@ func _on_bar_panel_mouse_entered() -> void:
 
 func _on_bar_panel_mouse_exited() -> void:
 	grass_percent.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+
+func show_warning(points: Array[Node2D]) -> void:
+	for c in warnings.get_children():
+		c.queue_free()
+	
+	for node in points:
+		var pos = node.global_position
+		
+		var warning_y = clamp(pos.y, 24, 360 - 24)
+		var warning_x = clamp(pos.x, 24, 640 - 24)
+		
+		var w = WARNING.instantiate()
+		warnings.add_child(w)
+		w.global_position = Vector2(warning_x, warning_y)
+
+	warnings.show()
+	
+
+func hide_warning() -> void:
+	for c in warnings.get_children():
+		c.queue_free()
+	
+	warnings.hide()
+	

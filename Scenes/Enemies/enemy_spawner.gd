@@ -24,8 +24,11 @@ func _ready() -> void:
 	randomize()
 
 
-func start_wave(_spawn_budget: int) -> void:
-	build_wave_spawns(_spawn_budget)
+func prepare_wave(budget: int) -> Array[Node2D]:
+	return build_wave_spawns(budget)
+
+
+func start_wave() -> void:
 	wave_active = true
 	spawn_counter = 0
 	$SpawnTimer.start()
@@ -67,7 +70,8 @@ func get_random_spawn() -> Node2D:
 		return %Markers.get_children().pick_random()
 
 
-func build_wave_spawns(budget: int) -> void:
+# returns list of used spawn points
+func build_wave_spawns(budget: int) -> Array[Node2D]:
 	print("Building wave with budget: ", budget)
 	var full_budget = budget
 	var enemy_list: Array[PackedScene] = []
@@ -101,14 +105,18 @@ func build_wave_spawns(budget: int) -> void:
 
 	wave_spawns.clear()
 	
+	var spawn_list: Array[Node2D] = []
 	for idx in groups.keys():
 		var group_spawn = get_random_spawn()
+		if group_spawn not in spawn_list:
+			spawn_list.append(group_spawn)
 		for pkd_scn in groups[idx]:
 			wave_spawns.append({"pos": group_spawn, "enemy": pkd_scn})
 	
 	amount_to_spawn = wave_spawns.size()
 	print("Spawning enemies in %s groups and spawning %s enemies in total." % [groups.size(), wave_spawns.size()])
 	
+	return spawn_list
 	
 func get_spawnable_with_budget(budget: int) -> Dictionary:
 	
