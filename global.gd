@@ -2,7 +2,13 @@ extends Node
 
 const MENU = preload("uid://co637quvudisn")
 
-const WORLD = preload("uid://cb5ogx63v83yx")
+const LEVEL_1 = preload("uid://bqgawphyt05re")
+const LEVEL_2 = preload("uid://cotqtw070igay")
+
+const levels: Dictionary[int, PackedScene] = {
+	1: LEVEL_1, 
+	2: LEVEL_2,
+	}
 
 # Levels: Waves
 var levels_won: Dictionary[int, int] = {}
@@ -20,8 +26,9 @@ func get_completed_wave(level: int) -> int:
 
 
 func load_level(level: int) -> void:
-	match level:
-		1: get_tree().change_scene_to_packed(WORLD)
+	if level in levels:
+		var level_scn = levels[level]
+		get_tree().change_scene_to_packed(level_scn)
 
 
 func load_menu() -> void:

@@ -132,7 +132,7 @@ func calculate_points() -> int:
 
 func calculate_wave_budget() -> int:
 	@warning_ignore("integer_division")
-	return calculate_points() / 50
+	return calculate_points() / 50 + wave * 2
 
 
 func _on_enemy_spawner_wave_cleared() -> void:

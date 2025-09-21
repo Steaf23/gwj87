@@ -5,7 +5,9 @@ const LEVEL_BUTTON = preload("uid://do87i5f61fatu")
 func _ready() -> void:
 	get_tree().paused = false
 	SoundManager.play_ambient(Sounds.AMBIENT)
-	add_level(1)
+	
+	for l in Global.levels.keys():
+		add_level(l)
 	
 
 func add_level(level: int) -> void:

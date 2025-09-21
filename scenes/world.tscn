@@ -1,11 +1,10 @@
-[gd_scene load_steps=29 format=4 uid="uid://cb5ogx63v83yx"]
+[gd_scene load_steps=27 format=4 uid="uid://cb5ogx63v83yx"]
 
 [ext_resource type="Script" uid="uid://i47uqdvpsp6c" path="res://Scenes/world.gd" id="1_nnsk1"]
 [ext_resource type="TileSet" uid="uid://blkvhyot7eq0s" path="res://Resources/tileset.tres" id="2_k0juu"]
 [ext_resource type="Script" uid="uid://ciy264vbij7ne" path="res://Scenes/Enemies/enemy_spawner.gd" id="2_k7acu"]
 [ext_resource type="Script" uid="uid://qeek0vpjmjkl" path="res://Scenes/place_preview.gd" id="2_o06y3"]
 [ext_resource type="PackedScene" uid="uid://bg1b7wd64d5l7" path="res://Scenes/Turrets/elder.tscn" id="2_rwgxs"]
-[ext_resource type="PackedScene" uid="uid://bbgace0xp8cxq" path="res://Scenes/Turrets/stump.tscn" id="5_fo5ed"]
 [ext_resource type="Script" uid="uid://dspmjf11a68lo" path="res://GUI/turret_container.gd" id="6_5ukr8"]
 [ext_resource type="Script" uid="uid://dfcoefsm22oc1" path="res://Scenes/description.gd" id="8_hgpy0"]
 [ext_resource type="Texture2D" uid="uid://yqrou1dugyux" path="res://Sprites/currency_small.png" id="8_k7acu"]
@@ -15,11 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://d0pwau4w45s2f" path="res://Util/pause_menu.tscn" id="10_0fj1v"]
 [ext_resource type="Texture2D" uid="uid://vpcm8o8ie7k2" path="res://Sprites/UI/percent_bar_progress.png" id="11_e0ngr"]
 [ext_resource type="Script" uid="uid://dkxwt1xc0k8eo" path="res://Scenes/bar_panel.gd" id="12_kn0ld"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_rwgxs"]
-vertices = PackedVector2Array(568.0469, 44.492188, 589.96875, 45.773438, 572.6875, 65.4375, 458.59375, 192.10156, 493.07813, 143.3125, -7.6015625, 192.46094, -11.4765625, 232.27344, -34.429688, 247.35938, -51.789063, 192.10156, -45.210938, 141, 9.1484375, 141, 41.929688, 142.92969, 8.1484375, 72, 32.867188, 72, 71.96094, 111.9375, 82.890625, 69.359375, 40.789063, 39.289063, 68.828125, 40.328125, 646.09375, 135.10156, 650.1328, 106.75781, 683.1719, 91.296875, 712.1172, 153.32813, 690.8906, 207.21094, 652.7031, 197.89844, 609.71094, 182.42969, 612.7422, 167.28125, 618.3672, 146.38281, 631.65625, 220.34375, 596.28906, 226.84375, 620.03906, 287.10938, 587.1719, 243.92969, 570.3125, 310.0703, 549, 294.8828, 563.1406, 268.95313, 547.97656, 342.6172, 151.24219, 315.04688, 443.14063, 297.0625, 409.29688, 275.15625, 202.92969, 301.7422, 71.88281, 14.9296875, 564.1094, 11.0703125, 355.45313, 43.992188, 63.3125, 298.6328, 43.5625, 282.67188, 44.90625, 271, 76.6875, 271, 173.46875, 111.86719, 338.60156, 109.140625, 343.52344, 137.6875, 259.0703, 130.77344, 78.72656, 205.85156, 98.72656, 203.35938, 130.04688, 60.382813, 165.92188, 45.007813, 524.71875, 198.32031, 490.21875, 236.27344, 464.7578, 232.25, 534.0469, 150.64844, 279.1875, 190.07031, 158.97656, 278.54688, 116.796875, 176.77344, 135.14844, 167.60156, 148.60938, 218.60938, 567.1094, 94.49219, 562.6172, 133.89063, 509.2578, 65.11719, 393.5078, 64.02344, 173.60938, 165.20313, 146.85156, 147.38281, 168.78125, 127.53906, 266.6797, 282.92188)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(5, 9, 10, 11), PackedInt32Array(11, 10, 12, 13, 14), PackedInt32Array(15, 14, 13, 16, 17), PackedInt32Array(18, 19, 20, 21, 22, 23), PackedInt32Array(24, 25, 26, 18, 23, 27), PackedInt32Array(28, 24, 27, 29), PackedInt32Array(30, 28, 29, 31), PackedInt32Array(32, 33, 30, 31, 34), PackedInt32Array(32, 34, 35, 36), PackedInt32Array(37, 36, 35, 38), PackedInt32Array(17, 39, 40, 0, 41), PackedInt32Array(42, 43, 44, 45, 35), PackedInt32Array(46, 47, 48, 49), PackedInt32Array(45, 50, 51, 35), PackedInt32Array(52, 15, 17, 53), PackedInt32Array(54, 55, 56, 3, 57), PackedInt32Array(3, 58, 49, 48), PackedInt32Array(59, 35, 51, 60, 61, 62), PackedInt32Array(63, 64, 57, 3), PackedInt32Array(2, 63, 3), PackedInt32Array(65, 66, 41, 0), PackedInt32Array(67, 61, 68, 69, 49), PackedInt32Array(38, 70, 37), PackedInt32Array(59, 38, 35), PackedInt32Array(67, 62, 61), PackedInt32Array(49, 69, 46), PackedInt32Array(3, 48, 4), PackedInt32Array(0, 4, 65), PackedInt32Array(17, 41, 53)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(573, 1, 577, 35, 611, 37, 582, 70, 577, 96, 572, 140, 543, 157, 534, 203, 494, 247, 456, 241, 450, 202, 272, 200, 253, 144, 181, 173, 159, 220, 168, 272, 204, 291, 265, 273, 412, 265, 446, 287, 543, 285, 555, 263, 579, 238, 587, 223, 600, 180, 603, 165, 610, 139, 637, 128, 641, 100, 688, 78, 723, 153, 697, 219, 656, 209, 641, 225, 629, 294, 577, 318, 553, 353, 150, 325, 59, 308, 33, 287, 36, 261, 67, 261, 69, 197, 93, 194, 110, 169, 128, 160, 139, 141, 160, 122, 166, 102, 347, 99, 352, 128, 485, 133, 497, 75, 391, 74, 353, 54, 168, 55, 133, 70, 91, 78, 81, 117, 49, 150, 28, 171, 2, 197, -2, 238, -40, 263, -62, 193, -54, 131, -1, 131, -2, 62, 25, 62, 33, 29, 60, 30, 63, 5)])
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fj1v"]
 bg_color = Color(0, 0, 0, 0.7058824)
@@ -103,8 +97,6 @@ expand_margin_bottom = 10.0
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_nnsk1")
-win_threshold = 30.0
-level = 1
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("2_k7acu")
@@ -112,11 +104,7 @@ script = ExtResource("2_k7acu")
 [node name="Markers" type="Node2D" parent="EnemySpawner"]
 unique_name_in_owner = true
 
-[node name="Marker2D2" type="Marker2D" parent="EnemySpawner/Markers"]
-position = Vector2(674, 155)
-
 [node name="Marker2D" type="Marker2D" parent="EnemySpawner/Markers"]
-position = Vector2(-33, 183)
 
 [node name="SpawnTimer" type="Timer" parent="EnemySpawner"]
 wait_time = 2.0
@@ -130,7 +118,6 @@ tile_set = ExtResource("2_k0juu")
 
 [node name="Boulders" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAAAP//AwAAAAAAAAABAP//AwAAAAAAAAACAP//AwAAAAAAAAADAP//AwAAAAAAAAAEAP//AwAAAAAAAAAFAP//AwAAAAAAAAAGAP//AwAAAAAAAAAHAP//AwAAAAAAAAAIAP//AwAAAAAAAAAJAP//AwAAAAAAAAAKAP//AwAAAAAAAAALAP//AwAAAAAAAAAMAP//AwAAAAAAAAANAP//AwAAAAAAAAAOAP//AwAAAAAAAAAPAP//AwAAAAAAAAAQAP//AwAAAAAAAAARAP//AwAAAAAAAAASAP//AwAAAAAAAAATAP//AwAAAAAAAAAUAP//AwAAAAAAAAAUAAAAAwAAAAAAAAAUAAEAAwAAAAAAAAAUAAIAAwAAAAAAAAAUAAcAAwAAAAAAAAAUAAgAAwAAAAAAAAAUAAkAAwAAAAAAAAAUAAoAAwAAAAAAAAAUAAsAAwAAAAAAAAATAAsAAwAAAAAAAAASAAsAAwAAAAAAAAARAAsAAwAAAAAAAAAQAAsAAwAAAAAAAAAPAAsAAwAAAAAAAAAOAAsAAwAAAAAAAAANAAsAAwAAAAAAAAAMAAsAAwAAAAAAAAALAAsAAwAAAAAAAAAKAAsAAwAAAAAAAAAJAAsAAwAAAAAAAAAIAAsAAwAAAAAAAAAHAAsAAwAAAAAAAAAGAAsAAwAAAAAAAAAFAAsAAwAAAAAAAAAEAAsAAwAAAAAAAAADAAsAAwAAAAAAAAACAAsAAwAAAAAAAAABAAsAAwAAAAAAAAAAAAsAAwAAAAAAAAD//wsAAwAAAAAAAAD//woAAwAAAAAAAAD//wkAAwAAAAAAAAD//wgAAwAAAAAAAAD//wIAAwAAAAAAAAD//wEAAwAAAAAAAAD//wAAAwAAAAAAAAD/////AwAAAAAAAAD//wMAAwAAAAAAAAATAAMAAwAAAAAAAAASAAMAAwAAAAAAAAATAAoAAwAAAAAAAAASAAQAAwAAAAAAAAARAAUAAwAAAAAAAAARAAYAAwAAAAAAAAAQAAcAAwAAAAAAAAAQAAgAAwAAAAAAAAAPAAgAAwAAAAAAAAAOAAgAAwAAAAAAAAANAAcAAwAAAAAAAAAMAAcAAwAAAAAAAAALAAcAAwAAAAAAAAANAAMAAwAAAAAAAAAMAAMAAwAAAAAAAAAKAAIAAwAAAAAAAAAJAAIAAwAAAAAAAAAIAAIAAwAAAAAAAAAHAAIAAwAAAAAAAAALAAMAAwAAAAAAAAAKAAcAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAcAAwAAAAAAAAABAAcAAwAAAAAAAAABAAYAAwAAAAAAAAACAAUAAwAAAAAAAAADAAQAAwAAAAAAAAADAAMAAwAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAJAAcAAwAAAAAAAAAIAAcAAwAAAAAAAAAHAAcAAwAAAAAAAAAOAAMAAwAAAAAAAAAEAAMAAwAAAAAAAAAAAAAAAwAAAAAAAAABAAAAAwAAAAAAAAAAAAEAAwAAAAAAAAATAAAAAwAAAAAAAAASAAAAAwAAAAAAAAATAAEAAwAAAAAAAAATAAIAAwAAAAAAAAASAAoAAwAAAAAAAAAAAAoAAwAAAAAAAAABAAoAAwAAAAAAAAACAAoAAwAAAAAAAAADAAoAAwAAAAAAAAA=")
 tile_set = ExtResource("2_k0juu")
 
 [node name="Objects" type="Node2D" parent="."]
@@ -141,18 +128,6 @@ y_sort_enabled = true
 position = Vector2(288, 161)
 input_pickable = false
 
-[node name="Stump" parent="Objects" instance=ExtResource("5_fo5ed")]
-position = Vector2(96, 160)
-input_pickable = false
-
-[node name="Stump2" parent="Objects" instance=ExtResource("5_fo5ed")]
-position = Vector2(288, 32)
-input_pickable = false
-
-[node name="Stump3" parent="Objects" instance=ExtResource("5_fo5ed")]
-position = Vector2(512, 288)
-input_pickable = false
-
 [node name="RangeChecker" type="Node2D" parent="Objects"]
 unique_name_in_owner = true
 visible = false
@@ -160,7 +135,6 @@ script = ExtResource("2_o06y3")
 color = Color(0.36588717, 0.61218995, 0.71056473, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_rwgxs")
 use_edge_connections = false
 
 [node name="PlacePreview" type="Node2D" parent="."]
