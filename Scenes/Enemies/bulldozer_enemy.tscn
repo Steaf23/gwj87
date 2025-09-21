@@ -86,7 +86,7 @@ offset = Vector2(5, 5)
 move_speed = 16
 
 [node name="HPBar" parent="." index="6"]
-max_hp = 105
+max_hp = 120
 
 [node name="StunTimer" parent="." index="7"]
 wait_time = 0.001
