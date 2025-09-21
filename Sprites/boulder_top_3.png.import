@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf06uhqfaxjg2"
-path="res://.godot/imported/fill_end.png-4504cbe16a7ff0a99546f3bf85ed6088.ctex"
+uid="uid://c04bbjgjnqe0y"
+path="res://.godot/imported/boulder_top_3.png-11d40ce8db28c779a74a540ea4179ed2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/fill_end.png"
-dest_files=["res://.godot/imported/fill_end.png-4504cbe16a7ff0a99546f3bf85ed6088.ctex"]
+source_file="res://Sprites/boulder_top_3.png"
+dest_files=["res://.godot/imported/boulder_top_3.png-11d40ce8db28c779a74a540ea4179ed2.ctex"]
 
 [params]
 
