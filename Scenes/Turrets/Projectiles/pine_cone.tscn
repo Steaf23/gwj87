@@ -13,6 +13,7 @@ radius = 42.047592
 [node name="PineCone" instance=ExtResource("1_kcv2u")]
 script = ExtResource("2_xsrw1")
 lifespan = 2.0
+damage = 3
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_xsrw1")
@@ -22,7 +23,7 @@ texture = ExtResource("2_q6uha")
 
 [node name="DamageArea" parent="." index="2"]
 visible = false
-damage = 4
+damage = 5
 
 [node name="CollisionShape2D" parent="DamageArea" index="0"]
 shape = SubResource("CircleShape2D_1sfop")

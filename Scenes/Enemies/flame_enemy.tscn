@@ -59,13 +59,16 @@ frame_progress = 0.0
 z_index = 1
 position = Vector2(15, 0)
 
-[node name="AIController" parent="." index="4"]
-move_speed = 15
+[node name="AIController" parent="." index="5"]
+move_speed = 12
 
-[node name="HPBar" parent="." index="5"]
-max_hp = 40
+[node name="HPBar" parent="." index="6"]
+max_hp = 50
 
-[node name="SoundPlayer" parent="." index="7"]
+[node name="StunTimer" parent="." index="7"]
+wait_time = 0.45
+
+[node name="SoundPlayer" parent="." index="8"]
 type = 2
 
 [connection signal="attack_started" from="." to="Sprite2D/Fire" method="_on_flame_enemy_attack_started"]

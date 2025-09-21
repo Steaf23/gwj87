@@ -78,15 +78,20 @@ wait_time = 3.0
 
 [node name="Sprite2D" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_dy8yf")
+frame = 0
+frame_progress = 0.0
 offset = Vector2(5, 5)
 
-[node name="AIController" parent="." index="4"]
-move_speed = 10
+[node name="AIController" parent="." index="5"]
+move_speed = 8
 
-[node name="HPBar" parent="." index="5"]
-max_hp = 50
+[node name="HPBar" parent="." index="6"]
+max_hp = 80
 
-[node name="SoundPlayer" parent="." index="7"]
+[node name="StunTimer" parent="." index="7"]
+wait_time = 0.2
+
+[node name="SoundPlayer" parent="." index="8"]
 type = 3
 
 [editable path="AIController"]
