@@ -37,7 +37,7 @@ position = Vector2(64, 96)
 position = Vector2(608, 288)
 
 [node name="Stump4" parent="Objects" index="4" instance=ExtResource("2_ucdhh")]
-position = Vector2(64, 256)
+position = Vector2(320, 224)
 
 [node name="NavigationRegion2D" parent="." index="5"]
 navigation_polygon = SubResource("NavigationPolygon_7qxk6")
