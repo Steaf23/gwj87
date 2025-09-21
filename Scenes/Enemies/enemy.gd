@@ -83,9 +83,12 @@ func take_damage(_amount: int, damage_effect: DAMAGE_EFFECT = DAMAGE_EFFECT.NONE
 	if $HPBar.current_hp <= 0:
 		is_dead = true
 		died.emit()
+		SoundManager.play_sfx(Sounds.ENEMY_DEATH, 0.2, randf_range(1.2, 0.8))
 		queue_free()
 		return
 		
+	SoundManager.play_sfx(Sounds.ENEMY_HIT, 0.1)
+	
 	match damage_effect:
 		DAMAGE_EFFECT.STUN:
 			$StunTimer.start()

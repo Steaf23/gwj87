@@ -6,6 +6,10 @@ const BUTTON_PRESS: StringName = "res://Sounds/button.mp3"
 
 const ELDER_DEATH: StringName = "res://Sounds/elder_death.wav"
 const TURRET_DEATH: StringName = "res://Sounds/turret_death.wav"
+const ENEMY_DEATH: StringName = "res://Sounds/enemy_death.wav"
+const ENEMY_HIT: StringName = "res://Sounds/enemy_hit.mp3"
+const PINECONE_EXPLODE: StringName = "res://Sounds/pine_cone_explode.mp3"
+const EXPLOSION: StringName = "res://Sounds/explosion.mp3"
 
 const ATTACK_AXE: Array[StringName] = [
 	"res://Sounds/attack_axe2.wav",

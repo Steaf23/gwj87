@@ -3,11 +3,13 @@ extends MarginContainer
 const LEVEL_BUTTON = preload("uid://do87i5f61fatu")
 
 func _ready() -> void:
+	$TextureRect/Fire/ExplodeParticles.restart()
 	get_tree().paused = false
 	SoundManager.play_ambient(Sounds.AMBIENT)
 	
 	for l in Global.levels.keys():
 		add_level(l)
+	
 	
 
 func add_level(level: int) -> void:
