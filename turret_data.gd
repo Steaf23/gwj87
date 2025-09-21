@@ -47,7 +47,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Birch Tree",
 		"projectile_speed": 0,
 		"vision_range": 0,
-		"price": 2000,
+		"price": 1600,
 		"description": "Spreads leaves around to claim more forest ground."
 	},
 	Turret.TURRET_TYPE.GROW_MUSHROOM: {
@@ -55,7 +55,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Entoloma Hochstetteri",
 		"projectile_speed": 0,
 		"vision_range": 0,
-		"price": 2250,
+		"price": 2000,
 		"description": "Explodes when getting hit, slowly restores charges."
 	},
 	Turret.TURRET_TYPE.LEAVES: {

@@ -60,10 +60,10 @@ z_index = 1
 position = Vector2(15, 0)
 
 [node name="AIController" parent="." index="5"]
-move_speed = 12
+move_speed = 19
 
 [node name="HPBar" parent="." index="6"]
-max_hp = 50
+max_hp = 45
 
 [node name="StunTimer" parent="." index="7"]
 wait_time = 0.35

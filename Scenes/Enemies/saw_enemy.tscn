@@ -59,13 +59,13 @@ animation = &"walk"
 frame = 0
 frame_progress = 0.07344218
 
-[node name="AIController" parent="." index="4"]
-move_speed = 20
+[node name="AIController" parent="." index="5"]
+move_speed = 23
 
-[node name="HPBar" parent="." index="5"]
+[node name="HPBar" parent="." index="6"]
 max_hp = 25
 
-[node name="SoundPlayer" parent="." index="7"]
+[node name="SoundPlayer" parent="." index="8"]
 type = 1
 
 [editable path="AIController"]

@@ -83,13 +83,13 @@ frame_progress = 0.0
 offset = Vector2(5, 5)
 
 [node name="AIController" parent="." index="5"]
-move_speed = 8
+move_speed = 16
 
 [node name="HPBar" parent="." index="6"]
-max_hp = 80
+max_hp = 105
 
 [node name="StunTimer" parent="." index="7"]
-wait_time = 0.1
+wait_time = 0.001
 
 [node name="SoundPlayer" parent="." index="8"]
 type = 3

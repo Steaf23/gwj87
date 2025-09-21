@@ -24,6 +24,6 @@ turret = NodePath("..")
 projectile = ExtResource("4_v75ij")
 
 [node name="Cooldown" parent="ProjectileEmitter" index="0"]
-wait_time = 1.65
+wait_time = 1.75
 
 [editable path="ProjectileEmitter"]
