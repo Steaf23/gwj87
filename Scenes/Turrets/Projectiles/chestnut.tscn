@@ -7,7 +7,7 @@
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uuldn"]
-radius = 6.0827627
+radius = 11.0
 
 [node name="Chestnut" instance=ExtResource("1_byakh")]
 lifespan = 3.0
