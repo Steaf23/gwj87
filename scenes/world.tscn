@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cb5ogx63v83yx"]
+[gd_scene load_steps=26 format=4 uid="uid://cb5ogx63v83yx"]
 
 [ext_resource type="Script" uid="uid://i47uqdvpsp6c" path="res://Scenes/world.gd" id="1_nnsk1"]
 [ext_resource type="TileSet" uid="uid://blkvhyot7eq0s" path="res://Resources/tileset.tres" id="2_k0juu"]
@@ -61,6 +61,8 @@ expand_margin_right = 15.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_0fj1v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0ngr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7acu"]
 bg_color = Color(0, 0, 0, 0.37254903)
@@ -276,28 +278,33 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "10"
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+[node name="BarContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 27.0
+offset_left = -178.5
+offset_right = 178.5
+offset_bottom = 69.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="GrassPercent" type="TextureProgressBar" parent="CanvasLayer/MarginContainer2"]
+[node name="GrassPercent" type="TextureProgressBar" parent="CanvasLayer/BarContainer"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.7294118)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+mouse_filter = 0
 step = 0.1
 texture_under = ExtResource("9_e0ngr")
 texture_over = ExtResource("9_7yui6")
 texture_progress = ExtResource("11_e0ngr")
 texture_progress_offset = Vector2(28, 0)
+
+[node name="BarPanel" type="Panel" parent="CanvasLayer/BarContainer"]
+custom_minimum_size = Vector2(352, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e0ngr")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 3
@@ -389,6 +396,8 @@ one_shot = false
 [connection signal="pressed" from="WinPopup/VBoxContainer/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="dragging_turret" from="CanvasLayer/TurretContainer" to="." method="_on_turret_container_dragging_turret"]
 [connection signal="folding_changed" from="CanvasLayer/TurretContainer/PanelContainer/FoldableContainer" to="." method="_on_foldable_container_folding_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/BarContainer/BarPanel" to="." method="_on_bar_panel_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/BarContainer/BarPanel" to="." method="_on_bar_panel_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/WaveButton" to="." method="_on_wave_button_pressed"]
 [connection signal="cancel_placement" from="CanvasLayer/DropContainer" to="." method="_on_drop_container_cancel_placement"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/MarginContainer2/HBoxContainer/MapSelect" to="." method="_on_map_select_pressed"]

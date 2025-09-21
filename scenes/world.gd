@@ -251,3 +251,11 @@ func _on_turret_clicked(turret: Turret) -> void:
 		range_checker.global_position = turret.global_position + Vector2(grass.tile_set.tile_size) / 2
 		range_checker.show()
 		selected_turret = turret
+
+
+func _on_bar_panel_mouse_entered() -> void:
+	grass_percent.modulate = Color(1.0, 1.0, 1.0, 0.2)
+
+
+func _on_bar_panel_mouse_exited() -> void:
+	grass_percent.modulate = Color(1.0, 1.0, 1.0, 1.0)
