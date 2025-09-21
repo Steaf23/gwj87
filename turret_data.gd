@@ -15,7 +15,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Chestnut Tree",
 		"projectile_speed": 60,
 		"vision_range": 110,
-		"price": 500,
+		"price": 550,
 		"description": "Launches spiky chestnuts from medium-long range that stun trespassers.",
 	},
 	Turret.TURRET_TYPE.CONE: {
@@ -23,7 +23,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Pine Tree",
 		"projectile_speed": 45,
 		"vision_range": 75,
-		"price": 900,
+		"price": 800,
 		"description": "Chucks pine cones towards trespassers that explode on impact.",
 	},
 	Turret.TURRET_TYPE.MUSHROOM_MINE: {
@@ -31,7 +31,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Fly Agaric",
 		"projectile_speed": 0,
 		"vision_range": 20,
-		"price": 600,
+		"price": 450,
 		"description": "Explodes when tresspassers approach it."
 	},
 	Turret.TURRET_TYPE.ROOTS: {
@@ -39,7 +39,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Roots",
 		"projectile_speed": 0,
 		"vision_range": 0,
-		"price": 800,
+		"price": 750,
 		"description": "Acts as a defensive wall that takes a bit of time to destroy."
 	},
 	Turret.TURRET_TYPE.BIRCH: {
@@ -47,7 +47,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Birch Tree",
 		"projectile_speed": 0,
 		"vision_range": 0,
-		"price": 1600,
+		"price": 1500,
 		"description": "Spreads leaves around to claim more forest ground."
 	},
 	Turret.TURRET_TYPE.GROW_MUSHROOM: {
@@ -55,7 +55,7 @@ var turrets: Dictionary[Turret.TURRET_TYPE, Dictionary] = {
 		"name": "Entoloma Hochstetteri",
 		"projectile_speed": 0,
 		"vision_range": 0,
-		"price": 2000,
+		"price": 2250,
 		"description": "Explodes when getting hit, slowly restores charges."
 	},
 	Turret.TURRET_TYPE.LEAVES: {

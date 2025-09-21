@@ -60,7 +60,7 @@ z_index = 1
 position = Vector2(15, 0)
 
 [node name="AIController" parent="." index="5"]
-move_speed = 19
+move_speed = 22
 
 [node name="HPBar" parent="." index="6"]
 max_hp = 45
