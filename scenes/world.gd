@@ -123,12 +123,12 @@ func update_preview() -> void:
 
 func calculate_points() -> int:
 	var placed_turrets = %Objects.get_children().filter(func(t): return t is Turret and t.type != Turret.TURRET_TYPE.DEAD and t.type != Turret.TURRET_TYPE.LEAVES).size() - 1
-	return (placed_turrets * 2 + grass.get_used_cells().size()) * 100
+	return (placed_turrets * 2 + grass.get_used_cells().size()) * 50
 
 
 func calculate_wave_budget() -> int:
 	@warning_ignore("integer_division")
-	return calculate_points() / 100
+	return calculate_points() / 50
 
 
 func _on_enemy_spawner_wave_cleared() -> void:
@@ -139,9 +139,6 @@ func _on_enemy_spawner_wave_cleared() -> void:
 	player_points += calculate_points()
 	next_wave_budget = calculate_wave_budget()
 	wave_button.disabled = false
-	
-	# TODO: DEBUG, REMOVE!
-	next_wave_budget = 5
 	
 
 func update_turret_buttons() -> void:

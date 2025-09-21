@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqbo4upr28ee1"]
+
+[ext_resource type="PackedScene" uid="uid://crb03q1nc67a5" path="res://Scenes/Enemies/enemy.tscn" id="1_vjllb"]
+[ext_resource type="Texture2D" uid="uid://cgx6gux8dyhwd" path="res://Sprites/Animations/Bulldozer/Dig/1.png" id="2_s4pc4"]
+[ext_resource type="Texture2D" uid="uid://bn8nukgasvu74" path="res://Sprites/Animations/Bulldozer/Dig/2.png" id="3_pu572"]
+[ext_resource type="Texture2D" uid="uid://b66dydr4ihbkx" path="res://Sprites/Animations/Bulldozer/Dig/3.png" id="4_ogfn1"]
+[ext_resource type="Texture2D" uid="uid://d1c0km0s8x8a2" path="res://Sprites/Animations/Bulldozer/Dig/4.png" id="5_1xv54"]
+[ext_resource type="Texture2D" uid="uid://d06u026fkbsvh" path="res://Sprites/Animations/Bulldozer/Move/1.png" id="6_g4rch"]
+[ext_resource type="Texture2D" uid="uid://ca2mcxpp3pwhj" path="res://Sprites/Animations/Bulldozer/Move/2.png" id="7_rm8k5"]
+[ext_resource type="Texture2D" uid="uid://bat0vm3ho6dgm" path="res://Sprites/Animations/Bulldozer/Move/3.png" id="8_kbjgv"]
+[ext_resource type="Texture2D" uid="uid://lkovv6wffums" path="res://Sprites/Animations/Bulldozer/Move/4.png" id="9_bsacu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjllb"]
+size = Vector2(36, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4pc4"]
+size = Vector2(29, 15)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pu572"]
+radius = 17.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dy8yf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s4pc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pu572")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ogfn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1xv54")
+}],
+"loop": false,
+"name": &"swing",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_g4rch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rm8k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kbjgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bsacu")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Enemy" instance=ExtResource("1_vjllb")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_vjllb")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_s4pc4")
+
+[node name="HitBox" parent="." index="2"]
+position = Vector2(13, 0)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(7, 0)
+shape = SubResource("CircleShape2D_pu572")
+
+[node name="Sprite2D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_dy8yf")
+animation = &"walk"
+frame = 0
+frame_progress = 0.0
+offset = Vector2(5, 5)
+
+[editable path="AIController"]

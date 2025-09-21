@@ -14,6 +14,7 @@ extends Node2D
 func _draw() -> void:
 	var trans_color = color
 	trans_color.a = 0.3
-	draw_circle(Vector2i.ZERO, radius, trans_color)
-	draw_circle(Vector2i.ZERO, radius, color, false, 2)
+	if radius > 4.0:
+		draw_circle(Vector2i.ZERO, radius, trans_color)
+		draw_circle(Vector2i.ZERO, radius, color, false, 2)
 	draw_rect(Rect2(-16, -16, 32, 32), trans_color)
