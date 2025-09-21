@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://do87i5f61fatu"]
+[gd_scene load_steps=6 format=3 uid="uid://do87i5f61fatu"]
 
 [ext_resource type="Script" uid="uid://cx2dcw3l0hx7l" path="res://Scenes/level_button.gd" id="1_iapje"]
 [ext_resource type="Texture2D" uid="uid://bqags8yma2gsh" path="res://Sprites/UI/level_button_frame.png" id="2_34smg"]
+[ext_resource type="Texture2D" uid="uid://dq2xgyjmvhrf4" path="res://Sprites/UI/level_button_frame_highlight.png" id="3_hsxrf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsxrf"]
 texture = ExtResource("2_34smg")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hsxrf"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="LevelButton" type="MarginContainer"]
 offset_top = 224.0
@@ -13,6 +18,7 @@ offset_bottom = 224.0
 script = ExtResource("1_iapje")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_hsxrf")
 
@@ -20,16 +26,36 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_hsxrf")
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="LevelButton"]
+[node name="Button" type="TextureButton" parent="LevelButton"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
-text = "Play"
-flat = true
+texture_normal = ExtResource("2_34smg")
+texture_pressed = ExtResource("3_hsxrf")
+texture_hover = ExtResource("3_hsxrf")
+texture_disabled = ExtResource("2_34smg")
+
+[node name="Label" type="Label" parent="LevelButton/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -6.5
+offset_right = 20.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
 
 [node name="Completed" type="Label" parent="LevelButton"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Completed!"
+label_settings = SubResource("LabelSettings_hsxrf")
 horizontal_alignment = 1

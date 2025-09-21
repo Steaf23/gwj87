@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var level: int = 0:
 	set(value):
 		level = value
-		%Button.text = str(level)
+		%Button/Label.text = str(level)
 		
 @onready var completed_wave: int = -1:
 	set(value):

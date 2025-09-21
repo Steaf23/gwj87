@@ -51,10 +51,14 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 			for b in $HitBox.get_overlapping_bodies().filter(func(c): return c is Turret):
 				if b == body: continue
 				b.damage(damage / 2.0)
+				if b.type == Turret.TURRET_TYPE.ELDER:
+					take_damage(2)
 		
 		# if it didn't die from the other damage
 		if is_instance_valid(body):
 			body.damage(damage)
+			if body.type == Turret.TURRET_TYPE.ELDER:
+				take_damage(2)
 		attack_started.emit($%AttackCooldown.wait_time * 0.7)
 		
 		

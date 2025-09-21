@@ -9,7 +9,7 @@ var levels_won: Dictionary[int, int] = {}
 
 
 func win_level(level: int, wave: int) -> void:
-	if not level in levels_won or levels_won[level] < wave:
+	if level in levels_won and levels_won[level] < wave:
 		return
 	
 	levels_won[level] = wave
