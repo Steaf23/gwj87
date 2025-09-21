@@ -60,7 +60,7 @@ frame = 0
 frame_progress = 0.07344218
 
 [node name="AIController" parent="." index="5"]
-move_speed = 23
+move_speed = 25
 
 [node name="HPBar" parent="." index="6"]
 max_hp = 25

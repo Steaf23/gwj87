@@ -83,7 +83,7 @@ frame_progress = 0.0
 offset = Vector2(5, 5)
 
 [node name="AIController" parent="." index="5"]
-move_speed = 16
+move_speed = 18
 
 [node name="HPBar" parent="." index="6"]
 max_hp = 90
